@@ -119,6 +119,95 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &905944065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905944067}
+  - component: {fileID: 905944066}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &905944066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905944065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83738c3c0fd44ed49a597faa7b3f5f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  onBootLoader:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1421555879}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMainMenu:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1421555879}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onGameplay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1421555879}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchToGameplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &905944067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905944065}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1421555878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421555877
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +237,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 905944067}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1421555879
@@ -163,6 +253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18feef68cbe561a43868c0db91404d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  mainMenu: {fileID: 11400000, guid: aa9d6fe05727df6418b73b267da26180, type: 2}
+  gameplayState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
+  pauseState: {fileID: 11400000, guid: 5ca8db0ed24aafe468f4f4b27b0c9f31, type: 2}
+  gameOverState: {fileID: 11400000, guid: 2d201643838e05b478640534b42279bb, type: 2}
+  survivedState: {fileID: 11400000, guid: 3417ac02f86c4ce41a23143e9b241c3b, type: 2}
+  currentState: {fileID: 0}
+  lastState: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
