@@ -7,10 +7,12 @@ public class ClockSystem : MonoBehaviour
     private int endTime = 6;
     private int hourLength = 60; // 60 seconds in an in game hour
 
+    [SerializeField] private IntEvent currentTimeEvent;
+
     private void Start()
     {
         currentTime = 0; //0 is 12am
-
+        currentTimeEvent.RaiseEvent(currentTime);
         StartCoroutine(BeginClockSystem());
     }
 
@@ -20,6 +22,7 @@ public class ClockSystem : MonoBehaviour
         {
             yield return new WaitForSeconds(hourLength);
             currentTime++;
+            currentTimeEvent.RaiseEvent(currentTime);
         }
 
     }
