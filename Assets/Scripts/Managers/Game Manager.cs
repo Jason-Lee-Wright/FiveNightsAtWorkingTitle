@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameState mainMenu;
+    [SerializeField] private GameState mainMenuState;
     [SerializeField] private GameState gameplayState;
     [SerializeField] private GameState pauseState;
     [SerializeField] private GameState gameOverState;
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToMenu()
     {
-        ChangeGameState(mainMenu);
+        ChangeGameState(mainMenuState);
     }
 
     public void SwitchToPause()
@@ -79,5 +79,17 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    private void OnEnable()
+    {
+        pauseState.onEnterState += PauseGame;
+        pauseState.onExitState += ResumeGame;
+    }
+
+    private void OnDisable()
+    {
+        pauseState.onEnterState -= PauseGame;
+        pauseState.onExitState -= ResumeGame;
     }
 }

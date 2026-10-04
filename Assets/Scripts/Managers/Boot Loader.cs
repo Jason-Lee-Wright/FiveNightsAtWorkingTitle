@@ -10,17 +10,12 @@ public static class BootLoad
     public static void Load()
     {
         string activeScene = SceneManager.GetActiveScene().name;
-
+        // When not in boot loader scene add boot loader additive 
         if (activeScene != bootSceneName)
         {
             SceneManager.LoadScene(bootSceneName, LoadSceneMode.Additive);
         }
-        else // Same scene as boot loader is handled in level manager 
-        {
-            //LevelManager.Instance.LoadMainMenu();
-            //SceneManager.LoadScene(bootSceneName, LoadSceneMode.Additive);
-        }
-        
+        // When in boot loader scene, scene will switch to main menu from Level Manager
     }
 
 }
