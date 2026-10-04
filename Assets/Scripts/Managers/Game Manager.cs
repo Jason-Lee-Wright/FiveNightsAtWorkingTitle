@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState currentState;
     [SerializeField] private GameState lastState;
 
+    [SerializeField] private PlayerInputActions playerInputActions;
     private static GameManager instance;
 
     public static GameManager Instance => instance;
