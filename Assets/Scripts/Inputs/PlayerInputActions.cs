@@ -29,7 +29,7 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     /// <param name="context"></param>
     public void OnLook(InputAction.CallbackContext context)
     {
-        //if (!canLook) return;
+        if (!canLook) return;
 
         lookEvent?.Invoke(context.ReadValue<Vector2>());
     }
@@ -37,9 +37,13 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     /// True allow look inputs, False disable look inputs
     /// </summary>
     /// <param name="newBool"></param>
-    public void SetLook(bool newBool)
+    public void DisableLook()
     {
-        canLook = newBool;
+        canLook = false;
+    }
+    public void EnableLook()
+    {
+        canLook = true;
     }
     /// <summary>
     /// Mouse position
@@ -52,7 +56,7 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        //if (!canInteract) return;
+        if (!canInteract) return;
 
         if (context.started) onInteractStarted?.Invoke();
 
@@ -62,14 +66,18 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     /// True allows interact, false disables interact inputs 
     /// </summary>
     /// <param name="newBool"></param>
-    public void SetInteract(bool newBool)
+    public void DisableInteract()
     {
-        canInteract = newBool;
+        canInteract = false;
+    }
+    public void EnableInteract()
+    {
+        canInteract = true;
     }
 
     public void OnCameraMenu(InputAction.CallbackContext context)
     {
-        //if (!canCamera) return;
+        if (!canCamera) return;
 
         if (context.started) onCameraStarted?.Invoke();
 
@@ -79,14 +87,18 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     /// True allows camera menu, false will disable this
     /// </summary>
     /// <param name="newBool"></param>
-    public void SetCamera(bool newBool)
+    public void DisableCamera()
     {
-        canCamera = newBool;
+        canCamera = false;
+    }
+    public void EnableCamera()
+    {
+        canCamera = true;
     }
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        //if (!canPause) return;
+        if (!canPause) return;
 
         if (context.started) onPauseStarted?.Invoke();
     }
@@ -94,9 +106,13 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
     /// True allows pause, false will disable pause input
     /// </summary>
     /// <param name="newBool"></param>
-    public void SetPause(bool newBool)
+    public void DisablePause()
     {
-        canPause = newBool;
+        canPause = false;
+    }
+    public void EnablePause()
+    {
+        canPause = true;
     }
 
     private void OnEnable()

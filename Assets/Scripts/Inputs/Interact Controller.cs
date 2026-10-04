@@ -30,7 +30,6 @@ public class InteractController : MonoBehaviour
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 interactable.OnInteract();
-                Debug.Log("hit");
             }
         }
     }

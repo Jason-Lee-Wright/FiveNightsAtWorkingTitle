@@ -32,18 +32,21 @@ public class LevelManager : MonoBehaviour
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         string activeScene = SceneManager.GetActiveScene().name;
+        
         if (activeScene == "Boot Loader") // Will probably remove once i get game states going and call it in boot loader
         {
             LoadMainMenu();
         }
-        if (activeScene == "Main Menu")
+        else if (activeScene == "Main Menu")
         {
             onMainMenu?.Invoke();
         }
-        if (sceneIndex > 1)// This would be gameplay levels index
+        else if (sceneIndex > 1)// This would be gameplay levels index
         {
             onGameplay?.Invoke();
+            GameManager.Instance.SwitchToGameplay(); // Tried using onGameplay?.Invoke() but didnt work this does tho
         }
+
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -55,6 +58,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadGameplay()
     {
+        onGameplay?.Invoke();
         LoadScene("Gameplay");
     }
 

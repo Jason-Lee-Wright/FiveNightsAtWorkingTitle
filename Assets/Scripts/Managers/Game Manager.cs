@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -71,6 +72,23 @@ public class GameManager : MonoBehaviour
         ChangeGameState(lastState);
     }
 
+    public void HandlePause()
+    {
+        
+        if (currentState == gameplayState)
+        {
+            Debug.Log("Paused");
+            SwitchToPause();
+            PauseGame();
+        }
+        else if (currentState == pauseState)
+        {
+            Debug.Log("Resume");
+            SwitchToGameplay();
+            ResumeGame();
+        }
+    }
+
     #endregion
     public void PauseGame()
     {
@@ -82,15 +100,53 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void DisableGameplayInputs()
+    {
+        playerInputActions.DisableInteract();
+        playerInputActions.DisableLook();
+        playerInputActions.DisableCamera();
+    }
+
+    public void EnableGameplayInputs()
+    {
+        playerInputActions.EnableInteract();
+        playerInputActions.EnableLook();
+        playerInputActions.EnableCamera();
+    }
+
     private void OnEnable()
     {
-        pauseState.onEnterState += PauseGame;
-        pauseState.onExitState += ResumeGame;
+        mainMenuState.onEnterState += playerInputActions.EnableInteract;
+        mainMenuState.onExitState += playerInputActions.DisableInteract;
+
+        gameplayState.onEnterState += EnableGameplayInputs;
+        gameplayState.onExitState += DisableGameplayInputs;
+
+        gameplayState.onEnterState += playerInputActions.EnablePause;
+        gameplayState.onExitState += playerInputActions.DisablePause;
+
+        pauseState.onEnterState += playerInputActions.EnablePause;
+        pauseState.onExitState += playerInputActions.DisablePause;
+
+
+        playerInputActions.onPauseStarted += HandlePause;
     }
 
     private void OnDisable()
     {
-        pauseState.onEnterState -= PauseGame;
-        pauseState.onExitState -= ResumeGame;
+        mainMenuState.onEnterState -= playerInputActions.EnableInteract;
+        mainMenuState.onExitState -= playerInputActions.DisableInteract;
+
+        gameplayState.onEnterState -= EnableGameplayInputs;
+        gameplayState.onExitState -= DisableGameplayInputs;
+
+        gameplayState.onEnterState -= playerInputActions.EnablePause;
+        gameplayState.onExitState -= playerInputActions.DisablePause;
+
+        pauseState.onEnterState -= playerInputActions.EnablePause;
+        pauseState.onExitState -= playerInputActions.DisablePause;
+
+
+        playerInputActions.onPauseStarted -= HandlePause;
     }
 }

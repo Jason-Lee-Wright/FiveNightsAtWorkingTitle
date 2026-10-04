@@ -47,7 +47,7 @@ MonoBehaviour:
   onMainMenu:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4580830177798163459, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchToMenu
         m_Mode: 1
@@ -62,7 +62,7 @@ MonoBehaviour:
   onGameplay:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4580830177798163459, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchToGameplay
         m_Mode: 1

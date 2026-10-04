@@ -249,7 +249,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6618268548041963493, guid: 0b52b8fd4a4dad44083dbbe29f5f9cce, type: 3}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+        m_MethodName: LoadGameplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
