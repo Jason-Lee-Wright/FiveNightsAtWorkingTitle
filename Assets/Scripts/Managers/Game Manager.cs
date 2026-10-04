@@ -58,11 +58,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(pauseState);
     }
 
-    private void SwitchToGameOver()
+    public void SwitchToGameOver()
     {
         ChangeGameState(gameOverState);
     }
-    private void SwitchToWinner()
+    public void SwitchToWinner()
     {
         ChangeGameState(survivedState);
     }
