@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerInput: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
-  turnSpeed: 200
+  turnSpeed: 145
   maxTurnAngleY: 30
   maxTurnAngleX: 35
   lookInput: {x: 0, y: 0}

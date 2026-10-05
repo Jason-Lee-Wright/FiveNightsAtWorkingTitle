@@ -3,13 +3,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerInputActions playerInput;
+    #region Head Settings
     [SerializeField] float turnSpeed;
     [SerializeField] float maxTurnAngleY;
     [SerializeField] float maxTurnAngleX;
     private float pitchY;
     private float pitchX;
-    [SerializeField] private Vector2 lookInput;
+    private Vector2 lookInput;
 
+    #endregion
     private Camera playerHead; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,8 +29,6 @@ public class Player : MonoBehaviour
     {
         pitchX += lookInput.x * turnSpeed * Time.deltaTime;
         pitchX = Mathf.Clamp(pitchX, -maxTurnAngleX, maxTurnAngleX);
-
-        //layerHead.transform.Rotate(Vector3.up, pitchX);
 
         pitchY -= lookInput.y * turnSpeed * Time.deltaTime;
         pitchY = Mathf.Clamp(pitchY, -maxTurnAngleY, maxTurnAngleY);
