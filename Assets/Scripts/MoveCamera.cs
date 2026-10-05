@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 public class MoveCamera : MonoBehaviour
 {
     [SerializeField] private float moveDuration;
-    [SerializeField] private float moveSpeed;
     private Camera mainCamera;
     private Vector3 cameraOldPosition;
     private Vector3 targetPosition;
@@ -18,11 +17,6 @@ public class MoveCamera : MonoBehaviour
         mainCamera = Camera.main;
 
         cameraOldPosition = mainCamera.transform.position;
-    }
-
-    private void Update()
-    {
-        //if (Vector3.Distance())
     }
 
     public void HandleCameraPosition()
@@ -40,16 +34,33 @@ public class MoveCamera : MonoBehaviour
 
     public void MoveToMe()
     {
-        Debug.Log("Moving camera to me");
-        mainCamera.transform.position = transform.position;
-        //StartCoroutine(MoveIntoPosiition(transform.position));
+        //mainCamera.transform.position = transform.position;
+        StartCoroutine(MoveIntoPosiition(transform.position));
     }
 
     public void MoveOldPosition()
     {
-        Debug.Log("Moving camera to old position");
-        mainCamera.transform.position = cameraOldPosition;
-        //StartCoroutine(MoveIntoPosiition(cameraOldPosition));
+        //mainCamera.transform.position = cameraOldPosition;
+        StartCoroutine(MoveIntoPosiition(cameraOldPosition));
+    }
+
+    private IEnumerator MoveIntoPosiition(Vector3 targetPosition)
+    {
+        Vector3 startPosition = mainCamera.transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < moveDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float timeProgress = elapsedTime / moveDuration;
+
+            mainCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, timeProgress);
+
+            yield return null;
+        }
+
+        mainCamera.transform.position = targetPosition;
     }
 
 
