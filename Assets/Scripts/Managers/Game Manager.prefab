@@ -66,6 +66,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467779281835328750}
   - component: {fileID: 2800213693137815262}
+  - component: {fileID: 3018837204684016089}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -102,7 +103,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractController
   inputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
-  cursorPosition: {x: 0, y: 0}
+--- !u!114 &3018837204684016089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868812905937801986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59078a8b0bad7e428701b058bfcac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  playerInput: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+  onCameraMenu:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8926754911072823391}
+        m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
+        m_MethodName: HandleCamMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5094669320987119306
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,3 +466,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5787351113245103408, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
   m_PrefabInstance: {fileID: 5751149701360924163}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8926754911072823391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3761073471062154844, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
+  m_PrefabInstance: {fileID: 5751149701360924163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9471b6d66f30a74e90f8de7dfc57f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayUI

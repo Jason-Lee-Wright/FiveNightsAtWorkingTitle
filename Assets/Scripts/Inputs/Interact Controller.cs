@@ -4,7 +4,7 @@ public class InteractController : MonoBehaviour
 {
     [SerializeField] private PlayerInputActions inputActions;
 
-    [SerializeField] private Vector2 cursorPosition;
+    private Vector2 cursorPosition;
     private Camera mainCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

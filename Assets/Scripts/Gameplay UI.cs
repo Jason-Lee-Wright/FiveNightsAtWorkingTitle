@@ -4,6 +4,8 @@ public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timeUI;
     [SerializeField] private IntEvent currentTimeEvent;
+
+    [SerializeField] private GameObject camMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +27,10 @@ public class GameplayUI : MonoBehaviour
         timeUI.text = $"{displayedTime} AM";
     }
 
+    public void HandleCamMenu()
+    {
+        camMenu.SetActive(!camMenu.activeInHierarchy);
+    }
     private void OnEnable()
     {
         currentTimeEvent.onEvent += SetTime;
