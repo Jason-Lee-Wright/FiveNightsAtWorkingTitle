@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenuState.onEnterState += playerInputActions.EnableInteract;
         mainMenuState.onExitState += playerInputActions.DisableInteract;
+        mainMenuState.onEnterState += playerInputActions.DisableLook;
 
         gameplayState.onEnterState += EnableGameplayInputs;
         gameplayState.onExitState += DisableGameplayInputs;
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenuState.onEnterState -= playerInputActions.EnableInteract;
         mainMenuState.onExitState -= playerInputActions.DisableInteract;
+        mainMenuState.onEnterState -= playerInputActions.DisableLook;
 
         gameplayState.onEnterState -= EnableGameplayInputs;
         gameplayState.onExitState -= DisableGameplayInputs;
