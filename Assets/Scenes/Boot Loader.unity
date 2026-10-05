@@ -966,6 +966,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 8073ffc2fb06b6a49a701c3cb2b1b4b6, type: 2}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VoidEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4124652649356714566, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: m_IsActive
       value: 0
