@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class MoveCamera : MonoBehaviour
 {
     [SerializeField] private float moveDuration;
     private Camera mainCamera;
     private Vector3 cameraOldPosition;
-    private Vector3 targetPosition;
     [SerializeField] private VoidEvent CameraEvent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +19,6 @@ public class MoveCamera : MonoBehaviour
 
     public void HandleCameraPosition()
     {
-
         if (Vector3.Distance(mainCamera.transform.position, transform.position) < .1f)
         {
             MoveOldPosition();
@@ -31,16 +28,18 @@ public class MoveCamera : MonoBehaviour
             MoveToMe();
         }
     }
-
+    /// <summary>
+    /// Moves camera to the position
+    /// </summary>
     public void MoveToMe()
     {
-        //mainCamera.transform.position = transform.position;
         StartCoroutine(MoveIntoPosiition(transform.position));
     }
-
+    /// <summary>
+    /// moves the camera back to old position
+    /// </summary>
     public void MoveOldPosition()
     {
-        //mainCamera.transform.position = cameraOldPosition;
         StartCoroutine(MoveIntoPosiition(cameraOldPosition));
     }
 
