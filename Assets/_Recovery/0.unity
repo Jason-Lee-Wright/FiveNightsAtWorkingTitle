@@ -642,8 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b074743ac2eb8f4d97c32ee56848c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveCamera
-  moveDuration: 4
-  moveSpeed: 10
+  moveDuration: 3
+  moveSpeed: 4
   CameraEvent: {fileID: 11400000, guid: 8073ffc2fb06b6a49a701c3cb2b1b4b6, type: 2}
 --- !u!1 &1272802976
 GameObject:
