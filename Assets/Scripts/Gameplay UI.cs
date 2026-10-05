@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 public class GameplayUI : MonoBehaviour
 {
+    [SerializeField] GameState gameplayState;
     [SerializeField] private TextMeshProUGUI timeUI;
     [SerializeField] private IntEvent currentTimeEvent;
 
@@ -31,13 +32,25 @@ public class GameplayUI : MonoBehaviour
     {
         camMenu.SetActive(!camMenu.activeInHierarchy);
     }
+
+    public void FalseCamMenu()
+    {
+        camMenu.SetActive(false);
+    }
+
+    public void TrueCamMenu()
+    {
+        camMenu.SetActive(true);
+    }
     private void OnEnable()
     {
         currentTimeEvent.onEvent += SetTime;
+        gameplayState.onEnterState += FalseCamMenu;
     }
 
     private void OnDisable()
     {
         currentTimeEvent.onEvent -= SetTime;
+        gameplayState.onEnterState -= FalseCamMenu;
     }
 }

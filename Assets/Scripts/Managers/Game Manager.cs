@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         playerInputActions.DisableInteract();
         playerInputActions.DisableLook();
         playerInputActions.DisableCamera();
+        ResumeGame();
     }
 
     public void EnableGameplayInputs()

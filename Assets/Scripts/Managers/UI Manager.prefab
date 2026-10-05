@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9471b6d66f30a74e90f8de7dfc57f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
+  gameplayState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
   timeUI: {fileID: 4021518991368369049}
   currentTimeEvent: {fileID: 11400000, guid: df8c9124449804f42b630cb930bf7ce7, type: 2}
   camMenu: {fileID: 249823207189796267}

@@ -66,7 +66,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1467779281835328750}
   - component: {fileID: 2800213693137815262}
-  - component: {fileID: 3018837204684016089}
   - component: {fileID: 5110090755219547974}
   m_Layer: 0
   m_Name: Player
@@ -104,46 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractController
   inputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
---- !u!114 &3018837204684016089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868812905937801986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59078a8b0bad7e428701b058bfcac59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  playerInput: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
-  onCameraMenu:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8926754911072823391}
-        m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
-        m_MethodName: HandleCamMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 8073ffc2fb06b6a49a701c3cb2b1b4b6, type: 2}
-        m_TargetAssemblyTypeName: VoidEvent, Assembly-CSharp
-        m_MethodName: RaiseEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5110090755219547974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +119,64 @@ MonoBehaviour:
   turnSpeed: 145
   maxTurnAngleY: 30
   maxTurnAngleX: 35
-  lookInput: {x: 0, y: 0}
+  cameraScreen: {fileID: 0}
+  screenOffset: {x: 0, y: 0, z: 0}
+  onCameraMenu:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8926754911072823391}
+        m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
+        m_MethodName: HandleCamMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+        m_TargetAssemblyTypeName: PlayerInputActions, Assembly-CSharp
+        m_MethodName: DisableLook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  offCameraMenu:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8926754911072823391}
+        m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
+        m_MethodName: HandleCamMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+        m_TargetAssemblyTypeName: PlayerInputActions, Assembly-CSharp
+        m_MethodName: EnableLook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveCameraEvent: {fileID: 11400000, guid: 158c63a5026731b43b3c48dea3742328, type: 2}
+  moveDuration: 3
 --- !u!1 &5094669320987119306
 GameObject:
   m_ObjectHideFlags: 0
