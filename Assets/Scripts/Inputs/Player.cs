@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -31,8 +29,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveDuration; // How long the camera takes to get into position
     private Vector3 oldPosition;
     private Quaternion oldRotation;
-    [SerializeField] private bool isMoving;
-    [SerializeField] private bool onCamera;
+    private bool isMoving;
+    private bool onCamera;
+    private Coroutine cameraMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -102,11 +101,21 @@ public class Player : MonoBehaviour
     /// <param name="targetRotation"></param>
     public void SetTargetCamera(Vector3 targetPosition, Quaternion targetRotation)
     {
-        StartCoroutine(MoveIntoPosiition(targetPosition, targetRotation));
+        if (cameraMovement != null )
+        {
+            StopCoroutine(cameraMovement);
+        }
+
+        cameraMovement = StartCoroutine(MoveIntoPosiition(targetPosition, targetRotation));
     }
     public void MoveOldPosition()
     {
-        StartCoroutine(MoveIntoPosiition(oldPosition, oldRotation));
+        if (cameraMovement != null)
+        {
+            StopCoroutine(cameraMovement);
+        }
+
+        cameraMovement = StartCoroutine(MoveIntoPosiition(oldPosition, oldRotation));
     }
 
     private IEnumerator MoveIntoPosiition(Vector3 targetPosition, Quaternion targetRotation)
@@ -116,7 +125,7 @@ public class Player : MonoBehaviour
         Quaternion startRotation = playerHead.transform.rotation;
         float elapsedTime = 0f;
 
-        while (elapsedTime < moveDuration)
+        while (elapsedTime < moveDuration && Vector3.Distance(playerHead.transform.position,targetPosition) > .1f)
         {
             elapsedTime += Time.deltaTime;
             float timeProgress = elapsedTime / moveDuration;
@@ -128,6 +137,7 @@ public class Player : MonoBehaviour
         isMoving = false;
         playerHead.transform.position = targetPosition;
         playerHead.transform.rotation = targetRotation;
+        cameraMovement = null;
     }
 
     #endregion
@@ -137,6 +147,7 @@ public class Player : MonoBehaviour
         playerInput.lookEvent += SetLookInput;
         playerInput.onCameraStarted += HandleCameraMenu;
         moveCameraEvent.onEvent += SetTargetCamera;
+        moveCameraEvent.onEventCanceled += MoveOldPosition; 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -146,6 +157,7 @@ public class Player : MonoBehaviour
         playerInput.lookEvent -= SetLookInput;
         playerInput.onCameraStarted -= HandleCameraMenu;
         moveCameraEvent.onEvent -= SetTargetCamera;
+        moveCameraEvent.onEventCanceled -= MoveOldPosition;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

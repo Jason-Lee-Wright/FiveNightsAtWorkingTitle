@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2800213693137815262, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: m_Enabled
       value: 0
