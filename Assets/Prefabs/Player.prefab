@@ -47,9 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractController
   inputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+  isInteractingEvent: {fileID: 11400000, guid: b073bc23203b74f43bc7d9f08352d99b, type: 2}
   onInteractionCanceled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+        m_TargetAssemblyTypeName: PlayerInputActions, Assembly-CSharp
+        m_MethodName: EnableCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5354415713319205280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +135,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onMovingStopped:
-    m_PersistentCalls:
-      m_Calls: []
   moveCameraEvent: {fileID: 11400000, guid: 158c63a5026731b43b3c48dea3742328, type: 2}
   moveDuration: 1
 --- !u!1 &7420752923360010895

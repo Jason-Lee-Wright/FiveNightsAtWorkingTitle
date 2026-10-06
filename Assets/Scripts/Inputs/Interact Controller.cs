@@ -34,6 +34,10 @@ public class InteractController : MonoBehaviour
             {
                 interact = interactable;
                 interact.OnInteract();
+                if (interact is ICancelable)
+                {
+                    inputActions.DisableCamera();
+                }
             }
         }
     }

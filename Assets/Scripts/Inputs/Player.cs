@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     {
         pitchX = 0f;
         pitchY = 0f;
+        lookInput = Vector2.zero;
     }
 
     private void SetLookInput(Vector2 inputValue)
