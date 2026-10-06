@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleHeadMovement();
+        if (onCamera) playerInput.DisableLook();
     }
 
     #region Player Camera Logic 
@@ -161,8 +162,6 @@ public class Player : MonoBehaviour
         moveCameraEvent.onEvent += SetTargetCamera;
         moveCameraEvent.onEventCanceled += MoveOldPosition;
 
-        playerInput.onPauseStarted += QuitCameraMenu;
-
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -172,8 +171,6 @@ public class Player : MonoBehaviour
         playerInput.onCameraStarted -= HandleCameraMenu;
         moveCameraEvent.onEvent -= SetTargetCamera;
         moveCameraEvent.onEventCanceled -= MoveOldPosition;
-
-        playerInput.onPauseStarted -= QuitCameraMenu;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
