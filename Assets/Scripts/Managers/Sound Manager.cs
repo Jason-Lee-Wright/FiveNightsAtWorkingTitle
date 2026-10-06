@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private float sfxSound;
+    [SerializeField] private float masterVolume;
+    [SerializeField] private float soundEffectsVolume;
+    [SerializeField] private float voiceVolume;
 
     private SoundManager instance;
 
     private SoundManager Instace => instance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -19,11 +20,5 @@ public class SoundManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
