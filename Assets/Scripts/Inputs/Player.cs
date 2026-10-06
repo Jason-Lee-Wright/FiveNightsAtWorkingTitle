@@ -82,18 +82,29 @@ public class Player : MonoBehaviour
 
         if (onCamera)
         {
-            offCameraMenu?.Invoke();
-            MoveOldPosition();
-            onCamera = false;
+            QuitCameraMenu();
         }
         else
         {
-            onCameraMenu?.Invoke();
-            ResetHead();
-            SetTargetCamera(cameraScreen.transform.position + screenOffset, cameraScreen.transform.rotation);
-            onCamera = true;
+            StartCameraMenu();
         }
     }
+
+    public void QuitCameraMenu()
+    {
+        offCameraMenu?.Invoke();
+        MoveOldPosition();
+        onCamera = false;
+    }
+
+    public void StartCameraMenu()
+    {
+        onCameraMenu?.Invoke();
+        ResetHead();
+        SetTargetCamera(cameraScreen.transform.position + screenOffset, cameraScreen.transform.rotation);
+        onCamera = true;
+    }
+
     /// <summary>
     /// Starts a coroutine 
     /// </summary>
@@ -148,7 +159,9 @@ public class Player : MonoBehaviour
         playerInput.lookEvent += SetLookInput;
         playerInput.onCameraStarted += HandleCameraMenu;
         moveCameraEvent.onEvent += SetTargetCamera;
-        moveCameraEvent.onEventCanceled += MoveOldPosition; 
+        moveCameraEvent.onEventCanceled += MoveOldPosition;
+
+        playerInput.onPauseStarted += QuitCameraMenu;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -159,6 +172,8 @@ public class Player : MonoBehaviour
         playerInput.onCameraStarted -= HandleCameraMenu;
         moveCameraEvent.onEvent -= SetTargetCamera;
         moveCameraEvent.onEventCanceled -= MoveOldPosition;
+
+        playerInput.onPauseStarted -= QuitCameraMenu;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

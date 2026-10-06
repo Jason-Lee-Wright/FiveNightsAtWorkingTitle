@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         }
         else if (currentState == pauseState)
         {
-            Debug.Log("Resume");
             SwitchToGameplay();
             ResumeGame();
         }
