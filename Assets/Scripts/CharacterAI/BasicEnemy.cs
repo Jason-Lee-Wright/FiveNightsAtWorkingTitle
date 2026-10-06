@@ -11,7 +11,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Start()
     {
-        currentPosition = 0;
+        currentPosition = 0; //The characters starting position
 
         characterPositions[currentPosition].SetActive(true); //Set the starting position of the enemy
 
@@ -23,8 +23,8 @@ public class BasicEnemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(moveSpeed);
-            int randomNumber = Random.Range(1, 21);
-            if (randomNumber <= aiLevel) ChangePosition();
+            int randomNumber = Random.Range(1, 21); //Random number between 1 and 20, Max exclusive
+            if (randomNumber <= aiLevel) ChangePosition(); //For example, if aiLevel is 10, and randomNumber is 5, the enemy will move
         }
     }
 
@@ -34,6 +34,6 @@ public class BasicEnemy : MonoBehaviour
         currentPosition++;
         characterPositions[currentPosition].SetActive(true);
 
-        if(currentPosition == characterPositions.Length) Debug.Log("Game Over");
+        if(currentPosition == characterPositions.Length) Debug.Log("Game Over"); //CharacterPositions.Length would be the maximum position the enemy can reach (The Office for example)
     }
 }
