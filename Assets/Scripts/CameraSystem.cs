@@ -6,6 +6,8 @@ public class CameraSystem : MonoBehaviour
     private int currentCameraIndex;
     private bool onCams;
 
+    [SerializeField] private IntEvent SetCamIndex;
+
     private void Start()
     {
         currentCameraIndex = 0;
@@ -18,5 +20,15 @@ public class CameraSystem : MonoBehaviour
     {
         currentCameraIndex = nextCameraIndex;
         transform.position = cameras[currentCameraIndex].position;
+    }
+
+    private void OnEnable()
+    {
+        SetCamIndex.onEvent += OnCameraChange;
+    }
+
+    private void OnDisable()
+    {
+        SetCamIndex.onEvent -= OnCameraChange;
     }
 }
