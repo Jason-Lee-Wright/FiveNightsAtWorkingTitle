@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class InteractController : MonoBehaviour
 {
     [SerializeField] private PlayerInputActions inputActions;
+    [SerializeField] private GetBoolEvent getOnCamEvent;
     [SerializeField] private UnityEvent onInteractionCanceled;
     private Vector2 cursorPosition;
     private Camera mainCamera;
@@ -32,12 +33,14 @@ public class InteractController : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                interact = interactable;
-                interact.OnInteract();
-                if (interact is ICancelable)
+                if (interactable is DoorInteractable)
                 {
+                    if (getOnCamEvent.GetBool()) return;
+
                     inputActions.DisableCamera();
                 }
+                interact = interactable;
+                interact.OnInteract();
             }
         }
     }

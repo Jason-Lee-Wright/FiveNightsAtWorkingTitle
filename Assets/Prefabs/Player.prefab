@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractController
   inputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
-  isInteractingEvent: {fileID: 11400000, guid: b073bc23203b74f43bc7d9f08352d99b, type: 2}
+  getOnCamEvent: {fileID: 11400000, guid: b9e2cb0f5807c7f49b56bb500ed0271e, type: 2}
   onInteractionCanceled:
     m_PersistentCalls:
       m_Calls:
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerInput: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+  getOnCamEvent: {fileID: 11400000, guid: b9e2cb0f5807c7f49b56bb500ed0271e, type: 2}
   turnSpeed: 145
   maxTurnAngleY: 30
   maxTurnAngleX: 35

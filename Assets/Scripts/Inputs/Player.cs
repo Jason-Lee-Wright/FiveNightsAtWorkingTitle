@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerInputActions playerInput;
+    [SerializeField] private GetBoolEvent getOnCamEvent;
     #region Camera Settings
     [Header("Player Camera Setiing")]
     [SerializeField] float turnSpeed;
@@ -107,6 +108,8 @@ public class Player : MonoBehaviour
         onCamera = true;
     }
 
+    private bool GetOnCam() => onCamera;
+
     /// <summary>
     /// Starts a coroutine 
     /// </summary>
@@ -163,6 +166,8 @@ public class Player : MonoBehaviour
         moveCameraEvent.onEvent += SetTargetCamera;
         moveCameraEvent.onEventCanceled += MoveOldPosition;
 
+        getOnCamEvent.onGetBool += GetOnCam;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -172,6 +177,8 @@ public class Player : MonoBehaviour
         playerInput.onCameraStarted -= HandleCameraMenu;
         moveCameraEvent.onEvent -= SetTargetCamera;
         moveCameraEvent.onEventCanceled -= MoveOldPosition;
+
+        getOnCamEvent.onGetBool -= GetOnCam;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
