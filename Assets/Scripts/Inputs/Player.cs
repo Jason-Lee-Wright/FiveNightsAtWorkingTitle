@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
             yield return null;
         }
         isMoving = false;
+        ResetHead();
         playerHead.transform.position = targetPosition;
         playerHead.transform.rotation = targetRotation;
         cameraMovement = null;
