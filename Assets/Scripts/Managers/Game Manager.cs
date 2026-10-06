@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         playerInputActions.DisableInteract();
         playerInputActions.DisableLook();
         playerInputActions.DisableCamera();
-        ResumeGame();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void EnableGameplayInputs()
@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
         playerInputActions.EnableInteract();
         playerInputActions.EnableLook();
         playerInputActions.EnableCamera();
+        Cursor.lockState = CursorLockMode.Confined;
+        ResumeGame();
     }
 
     private void OnEnable()
