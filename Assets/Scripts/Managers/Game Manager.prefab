@@ -34,6 +34,7 @@ Transform:
   - {fileID: 2414938094218401973}
   - {fileID: 2270092397374972723}
   - {fileID: 2968580352697896424}
+  - {fileID: 1908642463075363862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4580830177798163459
@@ -148,7 +149,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5094669320987119306}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &1421910401228993927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,3 +481,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9471b6d66f30a74e90f8de7dfc57f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
+--- !u!1001 &7525691485386134034
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9085989139382726572}
+    m_Modifications:
+    - target: {fileID: 5707133858635538966, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: voiceEffectEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
+    - target: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_Name
+      value: Sound Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 881533401594701433}
+  m_SourcePrefab: {fileID: 100100000, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+--- !u!1 &326525974779982424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+  m_PrefabInstance: {fileID: 7525691485386134034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &881533401594701433
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326525974779982424}
+  m_Enabled: 1
+--- !u!4 &1908642463075363862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+  m_PrefabInstance: {fileID: 7525691485386134034}
+  m_PrefabAsset: {fileID: 0}

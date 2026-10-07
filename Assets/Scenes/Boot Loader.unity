@@ -131,10 +131,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2414938094218401973, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2800213693137815262, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2829228727887212548, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: voiceEffectEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
     - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -152,28 +160,64 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+      objectReference: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: EnableLook
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlaySound
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: PlayerInputActions, Assembly-CSharp
+      value: SoundEvent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: SoundEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 1806f831ec433aa47809e24e71f91303, type: 3}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 1806f831ec433aa47809e24e71f91303, type: 3}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
+      propertyPath: offCameraMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5523591054877811624, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: m_IsActive
