@@ -139,10 +139,6 @@ PrefabInstance:
       propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2829228727887212548, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
-      propertyPath: voiceEffectEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
     - target: {fileID: 3018837204684016089, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: m_Enabled
       value: 0

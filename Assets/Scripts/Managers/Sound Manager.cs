@@ -4,8 +4,11 @@ using System;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
+    [Range(0f, 1f)]
     [SerializeField] private float masterVolume;
+    [Range(0f, 1f)]
     [SerializeField] private float soundEffectsVolume;
+    [Range(0f, 1f)]
     [SerializeField] private float voiceVolume;
     private AudioSource audioSource;
 
@@ -35,22 +38,24 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundEffect(AudioClip clip)
     {
-        audioSource.PlayOneShot(clip,1);
+        audioSource.PlayOneShot(clip,masterVolume * soundEffectsVolume);
         
     }
 
     public void PlayVoice(AudioClip clip)
     {
-        audioSource.PlayOneShot(clip,1);
+        audioSource.PlayOneShot(clip,masterVolume * voiceVolume);
     }
 
     private void OnEnable()
     {
         soundEffectEvent.OnPlay += PlaySoundEffect;
+        voiceEffectEvent.OnPlay += PlayVoice;
     }
 
     private void OnDisable()
     {
         soundEffectEvent.OnPlay -= PlaySoundEffect;
+        voiceEffectEvent.OnPlay -= PlayVoice;
     }
 }
