@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private SoundEvent soundEffectEvent;
     [SerializeField] private SoundEvent voiceEffectEvent;
+    [SerializeField] private SoundEvent backgroundEvent;
 
     private static SoundManager instance;
 
@@ -47,15 +48,29 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(clip,masterVolume * voiceVolume);
     }
 
+    public void PlayBackgroundAudio(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    public void StopBackgroundAudio()
+    {
+        audioSource.Stop();
+    }
+
     private void OnEnable()
     {
         soundEffectEvent.OnPlay += PlaySoundEffect;
         voiceEffectEvent.OnPlay += PlayVoice;
+        backgroundEvent.OnPlay += PlayBackgroundAudio;
     }
 
     private void OnDisable()
     {
         soundEffectEvent.OnPlay -= PlaySoundEffect;
         voiceEffectEvent.OnPlay -= PlayVoice;
+        backgroundEvent.OnPlay -= PlayBackgroundAudio;
     }
 }

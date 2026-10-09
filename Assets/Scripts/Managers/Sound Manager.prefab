@@ -50,6 +50,7 @@ MonoBehaviour:
   voiceVolume: 1
   soundEffectEvent: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
   voiceEffectEvent: {fileID: 11400000, guid: 2a14a37ff13d7dd42a36758be9de46e2, type: 2}
+  backgroundEvent: {fileID: 11400000, guid: 52ebdda1a9c48b64288ae6f603344c4c, type: 2}
 --- !u!82 &4032822874309708794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 4902c50f4086bfb459ee1bf5cc5cadb7, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f6eb0c81164b4134b9ee1937bf3632fd, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

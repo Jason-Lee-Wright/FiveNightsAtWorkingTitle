@@ -56,6 +56,21 @@ MonoBehaviour:
   survivedState: {fileID: 11400000, guid: 3417ac02f86c4ce41a23143e9b241c3b, type: 2}
   currentState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
   lastState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
+  onMainMenu:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameplay:
+    m_PersistentCalls:
+      m_Calls: []
+  onPause:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
+  onSurvived:
+    m_PersistentCalls:
+      m_Calls: []
   playerInputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
 --- !u!1 &5094669320987119306
 GameObject:
