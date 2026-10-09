@@ -77,6 +77,11 @@ public class Player : MonoBehaviour
         lookInput = inputValue.normalized;
     }
 
+    /// <summary>
+    /// Converts an angle from 0-360 to -180/180 for pitch 
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <returns></returns>
     private float NormalizeAngle(float angle)
     {
         angle %= 360f;
