@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DoorInteractable : CameraInteractable
 {
+    [SerializeField] Animator doorAnimator;
     private bool isClosed;
 
     public bool GetDoorStatus()
@@ -13,8 +14,8 @@ public class DoorInteractable : CameraInteractable
     {
         if (other.CompareTag("MainCamera"))
         {
-            Debug.Log("Here player ");
             isClosed = true;
+            doorAnimator.SetBool("isClosed",isClosed);
         }
     }
 
@@ -22,8 +23,8 @@ public class DoorInteractable : CameraInteractable
     {
         if (other.CompareTag("MainCamera"))
         {
-            Debug.Log("Player Gone");
             isClosed = false;
+            doorAnimator.SetBool("isClosed", isClosed);
         }
     }
 }

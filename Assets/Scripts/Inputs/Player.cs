@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] float maxTurnAngleX;
     private float pitchY;
     private float pitchX;
+    private float basePitchY;
+    private float basePitchX;
     private Vector2 lookInput;
     #endregion
 
@@ -52,10 +54,10 @@ public class Player : MonoBehaviour
     {
         if (onCamera || isMoving) return;
         pitchX += lookInput.x * turnSpeed * Time.deltaTime;
-        pitchX = Mathf.Clamp(pitchX, -maxTurnAngleX, maxTurnAngleX);
+        pitchX = Mathf.Clamp(pitchX,basePitchX - maxTurnAngleX,basePitchX + maxTurnAngleX);
 
         pitchY -= lookInput.y * turnSpeed * Time.deltaTime;
-        pitchY = Mathf.Clamp(pitchY, -maxTurnAngleY, maxTurnAngleY);
+        pitchY = Mathf.Clamp(pitchY,basePitchY - maxTurnAngleY,basePitchY + maxTurnAngleY);
 
 
         playerHead.transform.localEulerAngles = new Vector3(pitchY, pitchX, 0);
@@ -65,12 +67,22 @@ public class Player : MonoBehaviour
     {
         pitchX = 0f;
         pitchY = 0f;
+        basePitchX = 0f;
+        basePitchY = 0f;
         lookInput = Vector2.zero;
     }
 
     private void SetLookInput(Vector2 inputValue)
     {
         lookInput = inputValue.normalized;
+    }
+
+    private float NormalizeAngle(float angle)
+    {
+        angle %= 360f;
+        if (angle > 180f) angle -= 360f;
+        if (angle < -180f) angle += 360f;
+        return angle;
     }
 
     #endregion
@@ -131,11 +143,15 @@ public class Player : MonoBehaviour
             StopCoroutine(cameraMovement);
         }
 
+        basePitchX = 0f;
+        basePitchY = 0f;
+
         cameraMovement = StartCoroutine(MoveIntoPosiition(oldPosition, oldRotation));
     }
 
     private IEnumerator MoveIntoPosiition(Vector3 targetPosition, Quaternion targetRotation)
     {
+        ResetHead();
         isMoving = true;
         Vector3 startPosition = playerHead.transform.position;
         Quaternion startRotation = playerHead.transform.rotation;
@@ -150,10 +166,16 @@ public class Player : MonoBehaviour
             playerHead.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeProgress);
             yield return null;
         }
-        isMoving = false;
-        ResetHead();
         playerHead.transform.position = targetPosition;
         playerHead.transform.rotation = targetRotation;
+
+        basePitchY = NormalizeAngle(playerHead.transform.localEulerAngles.x);
+        basePitchX = NormalizeAngle(playerHead.transform.localEulerAngles.y);
+
+        pitchY = basePitchY;
+        pitchX = basePitchX;
+
+        isMoving = false;
         cameraMovement = null;
     }
 

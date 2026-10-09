@@ -160,10 +160,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
-      propertyPath: cameraScreen
-      value: 
-      objectReference: {fileID: 1579132475477687400, guid: 4c6234cbcf4aaf847801c539492fb1e5, type: 3}
-    - target: {fileID: 5110090755219547974, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
       propertyPath: screenOffset.z
       value: -1
       objectReference: {fileID: 0}
