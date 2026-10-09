@@ -45,12 +45,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleHeadMovement();
-        if (onCamera) playerInput.DisableLook();
     }
 
     #region Player Camera Logic 
     private void HandleHeadMovement()
     {
+        if (onCamera || isMoving) return;
         pitchX += lookInput.x * turnSpeed * Time.deltaTime;
         pitchX = Mathf.Clamp(pitchX, -maxTurnAngleX, maxTurnAngleX);
 
