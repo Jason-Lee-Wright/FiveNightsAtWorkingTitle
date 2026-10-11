@@ -312,6 +312,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5354415713319205280, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
+      propertyPath: screenOffset.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354415713319205280, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
+      propertyPath: screenOffset.z
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354415713319205280, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8926754911072823391}

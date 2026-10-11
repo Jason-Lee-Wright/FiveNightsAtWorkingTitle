@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private Camera playerHead;
 
     [Header("Camera Menu Setiing")]
-    [SerializeField] private GameObject cameraScreen; // Needs to be a prefab and prefabs needs to match the gameplay prefab position
+    [SerializeField] private GetTransformEvent screenTransformEvent;
     [SerializeField] private Vector3 screenOffset; // Where should the player be when going to screen
     [SerializeField] private UnityEvent onCameraMenu;
     [SerializeField] private UnityEvent offCameraMenu;
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
     {
         onCameraMenu?.Invoke();
         ResetHead();
-        SetTargetCamera(cameraScreen.transform.position + screenOffset, cameraScreen.transform.rotation);
+        SetTargetCamera(screenTransformEvent.GetTransform().position + screenOffset, screenTransformEvent.GetTransform().rotation);
         onCamera = true;
     }
 

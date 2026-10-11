@@ -20,6 +20,7 @@ public class CameraSystem : MonoBehaviour
     {
         currentCameraIndex = nextCameraIndex;
         transform.position = cameras[currentCameraIndex].position;
+        transform.rotation = cameras[currentCameraIndex].rotation;
     }
 
     private void OnEnable()
