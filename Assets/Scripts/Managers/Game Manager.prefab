@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 409308684989830325}
   - component: {fileID: 2979285084724648337}
   - component: {fileID: 1421910401228993927}
+  - component: {fileID: 1963079569025063987}
+  - component: {fileID: 8904247263079678122}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -164,7 +166,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5094669320987119306}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &1421910401228993927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +211,54 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!65 &1963079569025063987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094669320987119306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8904247263079678122
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094669320987119306}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &910858312931040998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,32 +308,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5110090755219547974}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
       propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveOldPosition
-      objectReference: {fileID: 0}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Player, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3060300725954107448, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-      propertyPath: onInteractionCanceled.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5354415713319205280, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
       propertyPath: onCameraMenu.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -307,17 +333,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1799924404630477320, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
   m_PrefabInstance: {fileID: 910858312931040998}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5110090755219547974 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5354415713319205280, guid: 3e8ee1cc3eae97d4794fa0644ba25871, type: 3}
-  m_PrefabInstance: {fileID: 910858312931040998}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c26612ea9b2cae4dabad704807535a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1001 &4103686684469262033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -518,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
       propertyPath: m_LocalRotation.w
@@ -551,24 +566,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 881533401594701433}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
---- !u!1 &326525974779982424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
-  m_PrefabInstance: {fileID: 7525691485386134034}
-  m_PrefabAsset: {fileID: 0}
---- !u!81 &881533401594701433
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326525974779982424}
-  m_Enabled: 1
 --- !u!4 &1908642463075363862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8218080572665904644, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
