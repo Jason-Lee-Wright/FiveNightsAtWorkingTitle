@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameState currentState;
     [SerializeField] private GameState lastState;
+
+    [SerializeField] private UnityEvent onMainMenu;
+    [SerializeField] private UnityEvent onGameplay;
+    [SerializeField] private UnityEvent onPause;
+    [SerializeField] private UnityEvent onGameOver;
+    [SerializeField] private UnityEvent onSurvived;
 
     [SerializeField] private PlayerInputActions playerInputActions;
     private static GameManager instance;
@@ -46,30 +53,30 @@ public class GameManager : MonoBehaviour
     public void SwitchToGameplay()
     {
         ChangeGameState(gameplayState);
+        onGameplay?.Invoke();
     }
 
     public void SwitchToMenu()
     {
         ChangeGameState(mainMenuState);
+        onMainMenu?.Invoke();
     }
 
     public void SwitchToPause()
     {
         ChangeGameState(pauseState);
+        onPause?.Invoke();
     }
 
     public void SwitchToGameOver()
     {
         ChangeGameState(gameOverState);
+        onGameOver?.Invoke();
     }
     public void SwitchToWinner()
     {
         ChangeGameState(survivedState);
-    }
-
-    public void SwitchToLastState()
-    {
-        ChangeGameState(lastState);
+        onSurvived?.Invoke();
     }
 
     public void HandlePause()
