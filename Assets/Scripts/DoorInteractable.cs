@@ -15,7 +15,7 @@ public class DoorInteractable : CameraInteractable
         if (other.CompareTag("MainCamera"))
         {
             isClosed = true;
-            doorAnimator.SetBool("isClosed",isClosed);
+            doorAnimator.SetBool("isClosed", isClosed);
         }
     }
 

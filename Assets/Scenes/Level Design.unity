@@ -622,7 +622,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -647,7 +647,7 @@ MonoBehaviour:
   onCancel:
     m_PersistentCalls:
       m_Calls: []
-  doorAnimator: {fileID: 0}
+  doorAnimator: {fileID: 242827083}
 --- !u!1 &408182061
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
   onCancel:
     m_PersistentCalls:
       m_Calls: []
-  doorAnimator: {fileID: 0}
+  doorAnimator: {fileID: 1192806696}
 --- !u!65 &441535304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1209,7 +1209,7 @@ Animator:
   m_GameObject: {fileID: 1192806694}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5aa0ac096447b854b81538c180a5ae42, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06d602f503837df4085f60f3226c5506, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
