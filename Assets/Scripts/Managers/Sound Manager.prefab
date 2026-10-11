@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d66717fd1ccd840973e6332d5b315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  masterVolume: 1
-  soundEffectsVolume: 1
-  voiceVolume: 1
+  masterVolume: 0.5
+  soundEffectsVolume: 0.5
+  voiceVolume: 0.5
+  backgroundVolume: 0.5
   audioSource: {fileID: 4032822874309708794}
   soundEffectEvent: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
   voiceEffectEvent: {fileID: 11400000, guid: 2a14a37ff13d7dd42a36758be9de46e2, type: 2}

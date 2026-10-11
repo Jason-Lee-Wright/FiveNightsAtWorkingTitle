@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float soundEffectsVolume;
     [Range(0f, 1f)]
     [SerializeField] private float voiceVolume;
+    [Range(0f, 1f)]
+    [SerializeField] private float backgroundVolume;
     [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private SoundEvent soundEffectEvent;
@@ -51,6 +53,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBackgroundAudio(AudioClip clip)
     {
         if (clip == null) return;
+        audioSource.volume = masterVolume * backgroundVolume;
         audioSource.clip = clip;
         audioSource.loop = true;
         audioSource.Play();
