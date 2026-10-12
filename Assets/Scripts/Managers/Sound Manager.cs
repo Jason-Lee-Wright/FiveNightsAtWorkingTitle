@@ -59,6 +59,25 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = volume;
+    }
+    public void SetSoundEffectsVolume(float volume)
+    {
+        soundEffectsVolume = volume;
+    }
+
+    public void SetVoiceVolume(float volume)
+    {
+        voiceVolume = volume;
+    }
+
+    public void SetBackgroundVolume(float volume)
+    {
+        backgroundVolume = volume;
+    }
+
     public void StopBackgroundAudio()
     {
         audioSource.Stop();
