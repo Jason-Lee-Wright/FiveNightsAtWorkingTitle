@@ -9,7 +9,9 @@ public class CameraSystem : MonoBehaviour
 
     [SerializeField] private IntEvent SetCamIndex;
     [SerializeField] private int maxLeftRotation;
+    private float baseLeftRotation;
     [SerializeField] private int maxRightRotation;
+    private float baseRightRotation;
     [SerializeField] private float rotationSpeed;
 
     private void Start()
