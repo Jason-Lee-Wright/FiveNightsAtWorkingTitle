@@ -11,11 +11,20 @@ public class BasicEnemy : MonoBehaviour
 
     private void Start()
     {
+        TurnOffAllPosition();
         currentPosition = 0; //The characters starting position
 
         characterPositions[currentPosition].SetActive(true); //Set the starting position of the enemy
 
         StartCoroutine(GameplayLoop());
+    }
+
+    private void TurnOffAllPosition()
+    {
+        for (int i = 0; i < characterPositions.Length; i++)
+        {
+            characterPositions[i].SetActive(false);
+        }
     }
 
     IEnumerator GameplayLoop()
@@ -32,7 +41,11 @@ public class BasicEnemy : MonoBehaviour
     {
         characterPositions[currentPosition].SetActive(false);
         currentPosition++;
-        characterPositions[currentPosition].SetActive(true);
+        if (characterPositions[currentPosition] == null)
+        {
+
+        }
+        //characterPositions[currentPosition].SetActive(true);
 
         if(currentPosition == characterPositions.Length) Debug.Log("Game Over"); //CharacterPositions.Length would be the maximum position the enemy can reach (The Office for example)
     }
