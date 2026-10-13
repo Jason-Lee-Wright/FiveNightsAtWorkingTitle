@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState pauseState;
     [SerializeField] private GameState gameOverState;
     [SerializeField] private GameState survivedState; // Player survived the night
+    [SerializeField] private GameState optionState;
 
     [SerializeField] private GameState currentState;
     [SerializeField] private GameState lastState;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UnityEvent onPause;
     [SerializeField] private UnityEvent onGameOver;
     [SerializeField] private UnityEvent onSurvived;
+    [SerializeField] private UnityEvent onOption;
+    private UnityEvent lastStateEvent;
 
     [SerializeField] private PlayerInputActions playerInputActions;
     private static GameManager instance;
@@ -53,30 +56,48 @@ public class GameManager : MonoBehaviour
     public void SwitchToGameplay()
     {
         ChangeGameState(gameplayState);
+        lastStateEvent = onGameplay;
         onGameplay?.Invoke();
     }
 
     public void SwitchToMenu()
     {
         ChangeGameState(mainMenuState);
+        lastStateEvent = onMainMenu;
         onMainMenu?.Invoke();
     }
 
     public void SwitchToPause()
     {
         ChangeGameState(pauseState);
+        lastStateEvent = onPause;
         onPause?.Invoke();
     }
 
     public void SwitchToGameOver()
     {
         ChangeGameState(gameOverState);
+        lastStateEvent = onGameOver;
         onGameOver?.Invoke();
     }
     public void SwitchToWinner()
     {
         ChangeGameState(survivedState);
+        lastStateEvent = onSurvived;
         onSurvived?.Invoke();
+    }
+
+    public void SwitchToOption()
+    {
+        ChangeGameState(optionState);
+        lastStateEvent = onOption;
+        onOption?.Invoke();
+    }
+
+    public void SwitchToLastState()
+    {
+        ChangeGameState(lastState);
+        lastStateEvent?.Invoke();
     }
 
     public void HandlePause()

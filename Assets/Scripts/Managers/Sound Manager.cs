@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = masterVolume * backgroundVolume;
     }
 
     public void PlaySoundEffect(AudioClip clip)
@@ -76,6 +77,7 @@ public class SoundManager : MonoBehaviour
     public void SetBackgroundVolume(float volume)
     {
         backgroundVolume = volume;
+        audioSource.volume = masterVolume * backgroundVolume;
     }
 
     public void StopBackgroundAudio()

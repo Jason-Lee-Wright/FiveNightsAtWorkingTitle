@@ -54,6 +54,7 @@ MonoBehaviour:
   pauseState: {fileID: 11400000, guid: 5ca8db0ed24aafe468f4f4b27b0c9f31, type: 2}
   gameOverState: {fileID: 11400000, guid: 2d201643838e05b478640534b42279bb, type: 2}
   survivedState: {fileID: 11400000, guid: 3417ac02f86c4ce41a23143e9b241c3b, type: 2}
+  optionState: {fileID: 11400000, guid: 9f8d24d3effba0d4eb0aa864ab9c6bf1, type: 2}
   currentState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
   lastState: {fileID: 11400000, guid: 25304c5ce0e4cb2428739a6705ba7e3f, type: 2}
   onMainMenu:
@@ -93,6 +94,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onSurvived:
+    m_PersistentCalls:
+      m_Calls: []
+  onOption:
     m_PersistentCalls:
       m_Calls: []
   playerInputActions: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
