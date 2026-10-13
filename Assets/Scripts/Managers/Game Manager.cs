@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     {
         if (currentState != null)
         {
-            currentState.ExitState();
-            lastState = currentState;
+            instance.currentState.ExitState();
+            instance.lastState = currentState;
         }
-
-        currentState = newState;
-        currentState.EnterState();
+        
+        instance.currentState = newState;
+        instance.currentState.EnterState();
     }
 
     public void SwitchToGameplay()

@@ -63,6 +63,7 @@ public class SoundManager : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         masterVolume = volume;
+        audioSource.volume = masterVolume * backgroundVolume;
     }
     public void SetSoundEffectsVolume(float volume)
     {
