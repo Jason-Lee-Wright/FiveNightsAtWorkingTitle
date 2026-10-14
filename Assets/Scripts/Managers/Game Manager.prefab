@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToLastState
       objectReference: {fileID: 0}
+    - target: {fileID: 8687773855061355986, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4580830177798163459}
     - target: {fileID: 8711778951913146836, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
