@@ -15,6 +15,7 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
 
     public event UnityAction onInteractStarted;
     public event UnityAction onInteractPerformed;
+    public event UnityAction onInteractCanceled;
     private bool canInteract;
 
     public event UnityAction onCameraStarted;
@@ -61,6 +62,8 @@ public class PlayerInputActions : ScriptableObject, InputActions.IPlayerActions
         if (context.started) onInteractStarted?.Invoke();
 
         if (context.performed) onInteractPerformed?.Invoke();
+
+        if (context.canceled) onInteractCanceled?.Invoke();
     }
     /// <summary>
     /// True allows interact, false disables interact inputs 

@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractController : MonoBehaviour
 {
     [SerializeField] private PlayerInputActions inputActions;
-
-    [SerializeField] private Vector2 cursorPosition;
+    [SerializeField] private GetBoolEvent getOnCamEvent;
+    [SerializeField] private UnityEvent onInteractionCanceled;
+    private Vector2 cursorPosition;
     private Camera mainCamera;
+
+    private IInteractable interact;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,8 +33,27 @@ public class InteractController : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                interactable.OnInteract();
+                if (interactable is DoorInteractable)
+                {
+                    if (getOnCamEvent.GetBool()) return;
+
+                    inputActions.DisableCamera();
+                }
+                interact = interactable;
+                interact.OnInteract();
             }
+        }
+    }
+
+    public void CancelInteract()
+    {
+        if (interact == null) return;
+        
+        if (interact is ICancelable cancelable)
+        {
+            onInteractionCanceled?.Invoke();
+            cancelable.Cancel();
+            interact = null;
         }
     }
 
@@ -38,11 +61,13 @@ public class InteractController : MonoBehaviour
     {
         inputActions.pointerEvent += SetCursorPosition;
         inputActions.onInteractStarted += Interact;
+        inputActions.onInteractCanceled += CancelInteract;
     }
 
     private void OnDisable()
     {
         inputActions.pointerEvent -= SetCursorPosition;
         inputActions.onInteractStarted -= Interact;
+        inputActions.onInteractCanceled -= CancelInteract;
     }
 }

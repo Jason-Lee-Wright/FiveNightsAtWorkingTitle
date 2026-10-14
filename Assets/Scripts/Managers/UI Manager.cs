@@ -10,12 +10,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameState pauseState;
     [SerializeField] private GameState gameOverState;
     [SerializeField] private GameState survivedState; // Player survived the night
+    [SerializeField] private GameState optionState;
 
     [SerializeField] private UnityEvent enableMainMenu;
     [SerializeField] private UnityEvent enableGameplay;
     [SerializeField] private UnityEvent enablePause;
     [SerializeField] private UnityEvent enablegameOverState;
     [SerializeField] private UnityEvent enableSurvived;
+    [SerializeField] private UnityEvent enableOption;
 
     private void Awake()
     {
@@ -52,6 +54,12 @@ public class UIManager : MonoBehaviour
         enableSurvived?.Invoke();
     }
 
+    public void EnableOptionMenu()
+    {
+        DisableAllMenus();
+        enableOption?.Invoke();
+    }
+
     public void DisableAllMenus()
     {
         canvasUI ??= transform.GetChild(0);
@@ -69,6 +77,7 @@ public class UIManager : MonoBehaviour
         pauseState.onEnterState += EnablePauseMenu;
         gameOverState.onEnterState += EnableGameOverMenu;
         survivedState.onEnterState += EnableSurvivedMenu;
+        optionState.onEnterState += EnableOptionMenu;
 
     }
 
@@ -79,5 +88,6 @@ public class UIManager : MonoBehaviour
         pauseState.onEnterState -= EnablePauseMenu;
         gameOverState.onEnterState -= EnableGameOverMenu;
         survivedState.onEnterState -= EnableSurvivedMenu;
+        optionState.onEnterState -= EnableOptionMenu;
     }
 }
