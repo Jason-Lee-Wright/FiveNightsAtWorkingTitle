@@ -137,7 +137,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   moveCameraEvent: {fileID: 11400000, guid: 158c63a5026731b43b3c48dea3742328, type: 2}
-  moveDuration: 1
+  moveDuration: 0.4
 --- !u!1 &7420752923360010895
 GameObject:
   m_ObjectHideFlags: 0

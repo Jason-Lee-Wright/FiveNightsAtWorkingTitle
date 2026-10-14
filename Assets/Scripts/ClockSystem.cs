@@ -24,6 +24,7 @@ public class ClockSystem : MonoBehaviour
             currentTime++;
             currentTimeEvent.RaiseEvent(currentTime);
         }
+        GameManager.Instance.SwitchToWinner();
 
     }
 }

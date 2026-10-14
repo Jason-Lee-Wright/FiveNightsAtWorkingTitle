@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private float warningTime;
     [SerializeField] private Transform canvasUI;
     [Header("Game states")]
     [SerializeField] private GameState mainMenuState;
@@ -18,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UnityEvent enablegameOverState;
     [SerializeField] private UnityEvent enableSurvived;
     [SerializeField] private UnityEvent enableOption;
+
+    [SerializeField] private UnityEvent onWarningStart;
+    [SerializeField] private UnityEvent onWarningEnd;
 
     private void Awake()
     {
@@ -70,9 +75,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    IEnumerator WarningScreen()
+    {
+        onWarningStart?.Invoke();
+        yield return new WaitForSeconds(warningTime);
+        onWarningEnd?.Invoke();
+    }
+
+    public void StartWarning()
+    {
+        StartCoroutine(WarningScreen());
+    }
+
+    public void EndWarning()
+    {
+        onWarningEnd?.Invoke();
+    }
+
     private void OnEnable()
     {
         mainMenuState.onEnterState += EnableMainMenu;
+        mainMenuState.onExitState += EndWarning;
         gameplayState.onEnterState += EnableGameplay;
         pauseState.onEnterState += EnablePauseMenu;
         gameOverState.onEnterState += EnableGameOverMenu;
@@ -84,6 +107,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         mainMenuState.onEnterState -= EnableMainMenu;
+        mainMenuState.onExitState -= EndWarning;
         gameplayState.onEnterState -= EnableGameplay;
         pauseState.onEnterState -= EnablePauseMenu;
         gameOverState.onEnterState -= EnableGameOverMenu;

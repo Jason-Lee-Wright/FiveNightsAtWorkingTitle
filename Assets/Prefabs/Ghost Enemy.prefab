@@ -80,8 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2e9b7b0f37f3d4abc9d083ddf2163b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
-  aiLevel: 3
-  moveSpeed: 1
+  jumpscare: {fileID: 0}
+  aiLevel: 2
+  moveSpeed: 3
   timeToKill: 3
   currentPosition: 0
   doorToAppearOn: {fileID: 0}

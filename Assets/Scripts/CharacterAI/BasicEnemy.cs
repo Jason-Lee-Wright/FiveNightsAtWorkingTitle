@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class BasicEnemy : MonoBehaviour
 {
+    [SerializeField] GameObject jumpscare;
     [SerializeField] private int aiLevel; //0-20
     [SerializeField] private float moveSpeed; //How fast the enemy waits before attempting to move
 
@@ -70,7 +71,9 @@ public class BasicEnemy : MonoBehaviour
         yield return new WaitForSeconds(timeToKill);
         if (!doorToAppearOn.isDoorClosed())
         {
-            Debug.Log("Killed player");
+            characterPositions[currentPosition].SetActive(false);
+            GameManager.Instance.SwitchToGameOver();
+            jumpscare.SetActive(true);
         }
         else
         {

@@ -1314,11 +1314,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254155283}
   m_Mesh: {fileID: 3895528892748612893, guid: 50aae1e9e74f9304a8ace702b9dfe66d, type: 3}
---- !u!1 &262907787 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8010102304742770195, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
-  m_PrefabInstance: {fileID: 528194112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &273264710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,17 +2377,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
-      propertyPath: characterPositions.Array.size
-      value: 3
+      propertyPath: jumpscare
+      value: 
+      objectReference: {fileID: 4194676418539732459}
+    - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
-      propertyPath: 'characterPositions.Array.data[1]'
+      propertyPath: doorToAppearOn
       value: 
-      objectReference: {fileID: 262907787}
+      objectReference: {fileID: 554007724}
     - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
-      propertyPath: 'characterPositions.Array.data[2]'
-      value: 
-      objectReference: {fileID: 948724267}
+      propertyPath: characterPositions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
       propertyPath: 'cameraIndexToShowOn.Array.data[0]'
       value: 1
@@ -2698,6 +2697,17 @@ Transform:
   - {fileID: 169036912}
   m_Father: {fileID: 675549082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554007724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2401363381522967989, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
+  m_PrefabInstance: {fileID: 227446768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54452de83d93f746a0c8544b65fbade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
 --- !u!1 &565968896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,6 +3105,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629257354}
   m_Mesh: {fileID: 8617219258917794646, guid: f490489c621e2364aa9bf6b788dc7a12, type: 3}
+--- !u!1 &632566855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632566857}
+  - component: {fileID: 632566856}
+  m_Layer: 0
+  m_Name: Voice guy Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &632566856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632566855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfc839ba6a641a418354921b87bf56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  phoneCalls: []
+  currentNightIndex: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2a14a37ff13d7dd42a36758be9de46e2, type: 2}
+        m_TargetAssemblyTypeName: SoundEvent, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 795815122a314c248af121d00e9bff34, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &632566857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632566855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652921523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,7 +3182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &652921524
 Transform:
   m_ObjectHideFlags: 0
@@ -4887,11 +4958,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &948724267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2145171496575622463, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
-  m_PrefabInstance: {fileID: 528194112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &971697888
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,6 +8720,21 @@ MonoBehaviour:
   maxRightRotation: 0
   rotationSpeed: 0
   currentCamEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
+  onCamChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ca0ac25ebb17c8741b02a139d7a4f6e2, type: 2}
+        m_TargetAssemblyTypeName: SoundEvent, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 1806f831ec433aa47809e24e71f91303, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1689738559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9936,6 +10017,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: jumpscare
+      value: 
+      objectReference: {fileID: 652921523}
+    - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: doorToAppearOn
+      value: 
+      objectReference: {fileID: 554007724}
     - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: 'characterPositions.Array.data[0]'
       value: 
@@ -12876,6 +12965,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
+      propertyPath: jumpscare
+      value: 
+      objectReference: {fileID: 7839941735132500723}
+    - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: doorToAppearOn
       value: 
       objectReference: {fileID: 1048433707}
@@ -12906,7 +12999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &4194676418539732460
 Animator:
   serializedVersion: 7
@@ -13042,7 +13135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &8632816680713237286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13127,3 +13220,4 @@ SceneRoots:
   - {fileID: 30990658}
   - {fileID: 1770559169}
   - {fileID: 528194112}
+  - {fileID: 632566857}

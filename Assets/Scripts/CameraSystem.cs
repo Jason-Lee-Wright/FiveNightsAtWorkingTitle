@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class CameraSystem : MonoBehaviour
@@ -17,6 +18,8 @@ public class CameraSystem : MonoBehaviour
 
     [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
 
+    [SerializeField] private UnityEvent onCamChange;
+
     private void Start()
     {
         currentCameraIndex = 0;
@@ -32,6 +35,7 @@ public class CameraSystem : MonoBehaviour
         currentCameraIndex = nextCameraIndex;
         transform.position = cameras[currentCameraIndex].position;
         transform.rotation = cameras[currentCameraIndex].rotation;
+        onCamChange?.Invoke();
     }
 
     public bool OnCam(int indexToCheck)

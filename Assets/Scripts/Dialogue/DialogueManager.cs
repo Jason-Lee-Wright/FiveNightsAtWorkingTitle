@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
@@ -9,11 +10,15 @@ public class DialogueManager : MonoBehaviour
     private AudioSource audioSource;
     private bool isPaused = false;
 
+    [SerializeField] private UnityEvent onStart;
     private void Start()
     {
+        onStart?.Invoke();
+        /*
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = phoneCalls[currentNightIndex];
         audioSource.Play();
+        */
     }
 
     public void OnPause(InputAction.CallbackContext context) //Invoke Unity Events to pause Audio
