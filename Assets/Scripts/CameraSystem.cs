@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraSystem : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private int maxRightRotation;
     private float baseRightRotation;
     [SerializeField] private float rotationSpeed;
+
+    [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
 
     private void Start()
     {
@@ -31,14 +34,26 @@ public class CameraSystem : MonoBehaviour
         transform.rotation = cameras[currentCameraIndex].rotation;
     }
 
+    public bool OnCam(int indexToCheck)
+    {
+        if (indexToCheck == currentCameraIndex)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private void OnEnable()
     {
         SetCamIndex.onEvent += OnCameraChange;
+        currentCamEvent.onActiveCam += OnCam;
     }
 
     private void OnDisable()
     {
         SetCamIndex.onEvent -= OnCameraChange;
+        currentCamEvent.onActiveCam -= OnCam;
     }
 
     private IEnumerator TurnCamera()
