@@ -13,14 +13,15 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int currentPosition; //currentPosition will go up every successful move attempt
 
     [SerializeField] private DoorInteractable doorToAppearOn;
-    private int cameraIndex;
-    private int currentCameraIndex;
+    [SerializeField] private int cameraIndex;
+    [SerializeField] private int currentCameraIndex;
+
+    private Coroutine moveLoop;
 
     private bool atDoor;
     public GameObject[] characterPositions; //Array of character positions/poses for the enemy to "move" to, will also be used to track if enemy is in Office
     public int[] cameraIndexToShowOn; // This isnt really good. This is an array of what cams the enemy will show on
 
-    private float timer;
     [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
     private void Start()
     {
@@ -31,19 +32,7 @@ public class BasicEnemy : MonoBehaviour
         cameraIndex = cameraIndexToShowOn[currentCameraIndex];
         characterPositions[currentPosition].SetActive(true); //Set the starting position of the enemy
 
-        //StartCoroutine(GameplayLoop());
-    }
-
-    private void Update()
-    {
-        if (atDoor) return;
-        timer += Time.deltaTime;
-        if (timer >= moveSpeed)
-        {
-            int randomNumber = Random.Range(1, 21); //Random number between 1 and 20, Max exclusive
-            if (randomNumber <= aiLevel) ChangePosition(); //For example, if aiLevel is 10, and randomNumber is 5, the enemy will move
-            timer = 0;
-        }
+        StartCoroutine(GameplayLoop());
     }
 
     private void TurnOffAllPosition()
@@ -53,16 +42,18 @@ public class BasicEnemy : MonoBehaviour
             characterPositions[i].SetActive(false);
         }
     }
-    
-    IEnumerator GameplayLoop() // This freezes the game if i cancel it
+
+    IEnumerator GameplayLoop()
     {
         while (true)
         {
-            yield return new WaitForSeconds(moveSpeed);
-            Debug.Log("timer done");
-            //if (!currentCamEvent.OnActiveCam(cameraIndex))
-            int randomNumber = Random.Range(1, 21); //Random number between 1 and 20, Max exclusive
-            if (randomNumber <= aiLevel) ChangePosition(); //For example, if aiLevel is 10, and randomNumber is 5, the enemy will move
+            if (!atDoor) 
+            {
+                yield return new WaitForSeconds(moveSpeed);
+                //if (!currentCamEvent.OnActiveCam(cameraIndex))
+                int randomNumber = Random.Range(1, 21); //Random number between 1 and 20, Max exclusive
+                if (randomNumber <= aiLevel) ChangePosition(); //For example, if aiLevel is 10, and randomNumber is 5, the enemy will move
+            }
         }
     }
     IEnumerator WaitToKill()
@@ -76,10 +67,10 @@ public class BasicEnemy : MonoBehaviour
         {
             characterPositions[currentPosition].SetActive(false);
             currentCameraIndex = Random.Range(0, cameraIndexToShowOn.Length);
-            cameraIndex = cameraIndexToShowOn[currentCameraIndex];
             currentPosition = currentCameraIndex;
             characterPositions[currentPosition].SetActive(true);
             atDoor = false;
+            StartCoroutine(GameplayLoop());
         }
     }
 
@@ -103,7 +94,13 @@ public class BasicEnemy : MonoBehaviour
         {
             atDoor = true;
             Debug.Log("At door waiting to kill");
+            StopCoroutine(GameplayLoop());
             StartCoroutine(WaitToKill());
+        }
+
+        if (currentPosition == characterPositions.Length) // Checks if out of array = enemy is in office
+        {
+            Debug.Log("Game Over"); //CharacterPositions.Length would be the maximum position the enemy can reach (The Office for example)
         }
     }
 }
