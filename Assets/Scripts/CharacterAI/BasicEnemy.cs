@@ -92,24 +92,22 @@ public class BasicEnemy : MonoBehaviour
 
     private void ChangePosition()
     {
-        if (currentPosition < characterPositions.Length - 1) // Checks if within array
+        if (currentPosition < characterPositions.Length - 1) // Checks if within array before adding current position
         {
             characterPositions[currentPosition].SetActive(false);
             currentPosition++;
             characterPositions[currentPosition].SetActive(true);
         }
 
-        if (currentCameraIndex < cameraIndexToShowOn.Length - 1) // Checks if within array
+        if (currentCameraIndex < cameraIndexToShowOn.Length - 1)  // Checks if within array before adding current camera index
         {
-            Debug.Log("inside range");
             currentCameraIndex++;
             cameraIndex = cameraIndexToShowOn[currentCameraIndex];
         }
 
-        if (currentPosition == characterPositions.Length - 1) // Checks if within array
+        if (currentPosition == characterPositions.Length - 1) // Checks if its last index array
         {
             atDoor = true;
-            Debug.Log("At door waiting to kill");
             StartCoroutine(WaitToKill());
         }
     }
