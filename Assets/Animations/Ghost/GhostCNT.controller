@@ -100,7 +100,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -161,6 +161,9 @@ MonoBehaviour:
         m_CallState: 2
   onExitStateAnimation:
     m_PersistentCalls:
+      m_Calls: []
+  onFinishedAnimation:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4580830177798163459, guid: 4482851503e58a64b9143dc9d86f5424, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
@@ -174,6 +177,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onFinishedAnimation:
-    m_PersistentCalls:
-      m_Calls: []
