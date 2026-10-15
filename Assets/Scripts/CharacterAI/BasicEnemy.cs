@@ -2,11 +2,13 @@ using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class BasicEnemy : MonoBehaviour
 {
-    [SerializeField] GameObject jumpscare;
+    [SerializeField] Animator animator;
+    [Range(1, 20)]
     [SerializeField] private int aiLevel; //0-20
     [SerializeField] private float moveSpeed; //How fast the enemy waits before attempting to move
 
@@ -23,8 +25,10 @@ public class BasicEnemy : MonoBehaviour
 
     private float timer;
     [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
+    [SerializeField] private UnityEvent onKill;
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         TurnOffAllPosition();
         currentCameraIndex = 0;
         currentPosition = 0; //The characters starting position
@@ -71,9 +75,9 @@ public class BasicEnemy : MonoBehaviour
         yield return new WaitForSeconds(timeToKill);
         if (!doorToAppearOn.isDoorClosed())
         {
+            onKill?.Invoke();
             characterPositions[currentPosition].SetActive(false);
-            GameManager.Instance.SwitchToGameOver();
-            jumpscare.SetActive(true);
+            animator.SetTrigger("jumpscare");
         }
         else
         {
