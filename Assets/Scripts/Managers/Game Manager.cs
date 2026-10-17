@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
         
         if (currentState == gameplayState)
         {
-            Debug.Log("Paused");
             SwitchToPause();
             PauseGame();
         }

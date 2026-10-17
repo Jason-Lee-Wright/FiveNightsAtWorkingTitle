@@ -2,29 +2,38 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.Video;
 
 public class CameraSystem : MonoBehaviour
 {
-    public Transform[] cameras; //Manually setting up camera positions in the inspector
+    [SerializeField] private Transform[] cameras; //Manually setting up camera positions in the inspector
+    [SerializeField] private GameObject activeCam;
+    [SerializeField] private int cameraStartIndex;
     private int currentCameraIndex;
-    private bool onCams;
 
     [SerializeField] private IntEvent SetCamIndex;
+    [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
+
+    [SerializeField] private UnityEvent onCamChange;
+    [Header("Cam turning setting")]
     [SerializeField] private int maxLeftRotation;
     private float baseLeftRotation;
     [SerializeField] private int maxRightRotation;
     private float baseRightRotation;
     [SerializeField] private float rotationSpeed;
 
-    [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
+    [SerializeField] private UnityEvent onStaticStart;
+    [SerializeField] private UnityEvent onStaticEnd;
+    [SerializeField] private float staticTime;
+    private Coroutine staticRoutine;
 
-    [SerializeField] private UnityEvent onCamChange;
+    [SerializeField] GetTransformEvent screenTransformEvent;
 
-    private void Start()
+    private Transform GetTransform() => transform;
+
+    private void Awake()
     {
-        currentCameraIndex = 0;
-        onCams = false;
-        transform.position = cameras[currentCameraIndex].position;
+        SetCamIndex.RaiseEvent(cameraStartIndex);
 
         StartCoroutine(TurnCamera());
     }
@@ -32,13 +41,18 @@ public class CameraSystem : MonoBehaviour
     //Method to be put on buttons
     public void OnCameraChange(int nextCameraIndex)
     {
+        if (currentCameraIndex == nextCameraIndex) return; 
         currentCameraIndex = nextCameraIndex;
-        transform.position = cameras[currentCameraIndex].position;
-        transform.rotation = cameras[currentCameraIndex].rotation;
+        if (activeCam  != null )
+        {
+            activeCam.transform.position = cameras[currentCameraIndex].position;
+            activeCam.transform.rotation = cameras[currentCameraIndex].rotation;
+        }
         onCamChange?.Invoke();
+        staticRoutine = StartCoroutine(PlayStaticVideo());
     }
 
-    public bool OnCam(int indexToCheck)
+    public bool CheckOnCams(int indexToCheck)
     {
         if (indexToCheck == currentCameraIndex)
         {
@@ -48,16 +62,11 @@ public class CameraSystem : MonoBehaviour
         return false;
     }
 
-    private void OnEnable()
+    private IEnumerator PlayStaticVideo()
     {
-        SetCamIndex.onEvent += OnCameraChange;
-        currentCamEvent.onActiveCam += OnCam;
-    }
-
-    private void OnDisable()
-    {
-        SetCamIndex.onEvent -= OnCameraChange;
-        currentCamEvent.onActiveCam -= OnCam;
+        onStaticStart?.Invoke();
+        yield return new WaitForSeconds(staticTime);
+        onStaticEnd?.Invoke();
     }
 
     private IEnumerator TurnCamera()
@@ -85,5 +94,19 @@ public class CameraSystem : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void OnEnable()
+    {
+        SetCamIndex.onEvent += OnCameraChange;
+        currentCamEvent.onActiveCam += CheckOnCams;
+        if (screenTransformEvent != null) screenTransformEvent.onGetTransform += GetTransform;
+    }
+
+    private void OnDisable()
+    {
+        SetCamIndex.onEvent -= OnCameraChange;
+        currentCamEvent.onActiveCam -= CheckOnCams;
+        if (screenTransformEvent != null) screenTransformEvent.onGetTransform -= GetTransform;
     }
 }

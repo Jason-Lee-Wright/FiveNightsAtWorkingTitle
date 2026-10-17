@@ -544,6 +544,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   doorAnimator: {fileID: 3673304617437115466}
+  onDoorChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &615728746254829877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3457,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   doorAnimator: {fileID: 7259142482412726027}
+  onDoorChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8871472655286157888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,7 +3596,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4868925733444364686, guid: 135c8f703a07c0e44815d34cf1ca4073, type: 3}
       propertyPath: m_Name
-      value: Monitor
+      value: Camera System
       objectReference: {fileID: 0}
     - target: {fileID: 8728669984530315126, guid: 135c8f703a07c0e44815d34cf1ca4073, type: 3}
       propertyPath: m_LocalScale.x

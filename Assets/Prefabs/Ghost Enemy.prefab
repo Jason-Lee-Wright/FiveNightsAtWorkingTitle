@@ -199,14 +199,14 @@ MonoBehaviour:
   moveSpeed: 3
   timeToKill: 3
   currentPosition: 0
-  doorToAppearOn: {fileID: 0}
   characterPositions:
   - {fileID: 719847650451454131}
   - {fileID: 7906607038491175127}
   - {fileID: 7983108159820170085}
   - {fileID: 8686338204055671481}
   cameraIndexToShowOn: 040000000300000002000000
-  currentCamEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
+  camIndexEvent: {fileID: 11400000, guid: 805265d254e85564db0dcc1248f65191, type: 2}
+  activeCamBoolEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
   onKill:
     m_PersistentCalls:
       m_Calls:

@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerInput: {fileID: 11400000, guid: 13ceb5196e95c224990e180c3ea04653, type: 2}
+  gameoverState: {fileID: 0}
   getOnCamEvent: {fileID: 11400000, guid: b9e2cb0f5807c7f49b56bb500ed0271e, type: 2}
   turnSpeed: 145
   maxTurnAngleY: 30
@@ -87,7 +88,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
-        m_MethodName: HandleCamMenu
+        m_MethodName: EnableCamMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -114,7 +115,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameplayUI, Assembly-CSharp
-        m_MethodName: HandleCamMenu
+        m_MethodName: DisableCamMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -138,6 +139,7 @@ MonoBehaviour:
         m_CallState: 2
   moveCameraEvent: {fileID: 11400000, guid: 158c63a5026731b43b3c48dea3742328, type: 2}
   moveDuration: 0.4
+  onKilled: {fileID: 11400000, guid: 5e8a7996f4790a6408b7652dfb38bb0b, type: 2}
 --- !u!1 &7420752923360010895
 GameObject:
   m_ObjectHideFlags: 0

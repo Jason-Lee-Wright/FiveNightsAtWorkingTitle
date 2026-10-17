@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorInteractable : CameraInteractable
 {
     [SerializeField] Animator doorAnimator;
+    [SerializeField] UnityEvent<bool> onDoorChange;
     private bool isClosed;
 
     private void Start()
@@ -18,8 +20,7 @@ public class DoorInteractable : CameraInteractable
     {
         if (other.CompareTag("MainCamera"))
         {
-            isClosed = true;
-            doorAnimator.SetBool("isClosed", isClosed);
+            ChangeDoorState(true);
         }
     }
 
@@ -27,8 +28,16 @@ public class DoorInteractable : CameraInteractable
     {
         if (other.CompareTag("MainCamera"))
         {
-            isClosed = false;
-            doorAnimator.SetBool("isClosed", isClosed);
+            ChangeDoorState(false);
         }
+    }
+
+    private void ChangeDoorState(bool newState)
+    {
+        isClosed = newState;
+
+        doorAnimator.SetBool("isClosed", isClosed);
+
+        onDoorChange?.Invoke(isClosed);
     }
 }

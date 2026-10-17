@@ -472,14 +472,17 @@ MonoBehaviour:
   moveSpeed: 1
   timeToKill: 3
   currentPosition: 0
-  doorToAppearOn: {fileID: 0}
   characterPositions:
   - {fileID: 180589931390082075}
   - {fileID: 4659504456395112943}
   - {fileID: 5845920180604034281}
   - {fileID: 452120873250732011}
-  cameraIndexToShowOn: 010000000200000003000000
-  currentCamEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
+  cameraIndexToShowOn: 000000000100000002000000
+  camIndexEvent: {fileID: 11400000, guid: 805265d254e85564db0dcc1248f65191, type: 2}
+  activeCamBoolEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
+  onKill:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3456847923155772533
 GameObject:
   m_ObjectHideFlags: 0

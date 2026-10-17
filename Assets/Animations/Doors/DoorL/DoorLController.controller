@@ -30,6 +30,9 @@ MonoBehaviour:
   onExitStateAnimation:
     m_PersistentCalls:
       m_Calls: []
+  onFinishedAnimation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1102 &-3798222407182710165
 AnimatorState:
   serializedVersion: 6
@@ -164,6 +167,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onExitStateAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinishedAnimation:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1102 &9031134985167938659

@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerInputActions playerInput;
-    [SerializeField] GameState gameoverState;
     [SerializeField] private GetBoolEvent getOnCamEvent;
     #region Camera Settings
     [Header("Player Camera Setiing")]
