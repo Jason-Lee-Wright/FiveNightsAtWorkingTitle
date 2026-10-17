@@ -851,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 1413306801375685837, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
       propertyPath: onDoorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 610274819}
+      objectReference: {fileID: 1959468706}
     - target: {fileID: 1413306801375685837, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
       propertyPath: onDoorChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -892,6 +892,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 86.145
       objectReference: {fileID: 0}
+    - target: {fileID: 2401363381522967989, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
+      propertyPath: onDoorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 280954582}
+    - target: {fileID: 2401363381522967989, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
+      propertyPath: onDoorChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 610274819}
     - target: {fileID: 2827513810664474200, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1149,6 +1157,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1689738557}
     - target: {fileID: 8693064161022484113, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
+      propertyPath: cameraStartIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693064161022484113, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
       propertyPath: 'cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 726236609}
@@ -1383,6 +1395,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cfcccaf0bb41b54197f3d4977fb16af, type: 3}
+--- !u!114 &280954582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+  m_PrefabInstance: {fileID: 1770559169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2e9b7b0f37f3d4abc9d083ddf2163b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
 --- !u!1 &291689347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2485,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
+      propertyPath: maxWaitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
+      propertyPath: minWaitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
+      propertyPath: timeToRetreat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145517923972655318, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
       propertyPath: doorToAppearOn
       value: 
       objectReference: {fileID: 554007724}
@@ -2647,7 +2682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777580580672293941, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8898052124780562426, guid: c2bd26b6040d4bd40a550acc541610f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4949,17 +4984,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043350452}
   m_Mesh: {fileID: -3339082285309697363, guid: f490489c621e2364aa9bf6b788dc7a12, type: 3}
---- !u!114 &1048433707 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1413306801375685837, guid: 0e996f6965f89ff4eba800c89e8817b6, type: 3}
-  m_PrefabInstance: {fileID: 227446768}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54452de83d93f746a0c8544b65fbade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
 --- !u!1 &1059707488
 GameObject:
   m_ObjectHideFlags: 0
@@ -7827,6 +7851,7 @@ MonoBehaviour:
   - {fileID: 927054353}
   - {fileID: 2052598908}
   activeCam: {fileID: 0}
+  cameraStartIndex: 0
   SetCamIndex: {fileID: 11400000, guid: 805265d254e85564db0dcc1248f65191, type: 2}
   currentCamEvent: {fileID: 11400000, guid: 0484fa904177b6b43a3c7378a9b6196b, type: 2}
   onCamChange:
@@ -8789,6 +8814,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505088480102309608, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 940567487288077649, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00219977
@@ -8819,7 +8848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949336795059020723, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: kill
@@ -8840,6 +8869,18 @@ PrefabInstance:
     - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: timeToKill
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: maxWaitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: minWaitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
+      propertyPath: timeToRetreat
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3942681780637836206, guid: fa4121c2efae32c469a6ac090a1cdb1c, type: 3}
       propertyPath: doorToAppearOn
@@ -10213,6 +10254,17 @@ Transform:
   - {fileID: 565968897}
   m_Father: {fileID: 2026727529082764259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959468706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
+  m_PrefabInstance: {fileID: 3856607776924322329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2e9b7b0f37f3d4abc9d083ddf2163b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
 --- !u!1 &1964692663
 GameObject:
   m_ObjectHideFlags: 0
@@ -11570,7 +11622,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2070040638288566002, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.990737
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2070040638288566002, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11578,7 +11630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070040638288566002, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1689117
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2070040638288566002, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11609,36 +11661,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: aiLevel
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: jumpscare
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: moveSpeed
+      propertyPath: timeToRetreat
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6901249311772061995, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: doorToAppearOn
-      value: 
-      objectReference: {fileID: 1048433707}
     - target: {fileID: 7449344539841753381, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_Name
       value: Ghost Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7449344539841753381, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342850412999919619, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.857
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342850412999919619, guid: 00fcd89deb1baac42bb7e6f1043e7b78, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.29
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

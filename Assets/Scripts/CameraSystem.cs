@@ -49,6 +49,12 @@ public class CameraSystem : MonoBehaviour
             activeCam.transform.rotation = cameras[currentCameraIndex].rotation;
         }
         onCamChange?.Invoke();
+
+        if (staticRoutine != null )
+        {
+            StopCoroutine(staticRoutine);
+            staticRoutine = null;
+        }
         staticRoutine = StartCoroutine(PlayStaticVideo());
     }
 
@@ -67,6 +73,16 @@ public class CameraSystem : MonoBehaviour
         onStaticStart?.Invoke();
         yield return new WaitForSeconds(staticTime);
         onStaticEnd?.Invoke();
+    }
+
+    private void ForceStatic()
+    {
+        if (staticRoutine != null)
+        {
+            StopCoroutine(staticRoutine);
+            staticRoutine = null;
+        }
+        staticRoutine = StartCoroutine(PlayStaticVideo());
     }
 
     private IEnumerator TurnCamera()
@@ -100,6 +116,7 @@ public class CameraSystem : MonoBehaviour
     {
         SetCamIndex.onEvent += OnCameraChange;
         currentCamEvent.onActiveCam += CheckOnCams;
+        currentCamEvent.onStaticMove += ForceStatic;
         if (screenTransformEvent != null) screenTransformEvent.onGetTransform += GetTransform;
     }
 
@@ -107,6 +124,7 @@ public class CameraSystem : MonoBehaviour
     {
         SetCamIndex.onEvent -= OnCameraChange;
         currentCamEvent.onActiveCam -= CheckOnCams;
+        currentCamEvent.onStaticMove -= ForceStatic;
         if (screenTransformEvent != null) screenTransformEvent.onGetTransform -= GetTransform;
     }
 }
