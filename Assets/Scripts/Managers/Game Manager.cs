@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,10 +24,11 @@ public class GameManager : MonoBehaviour
     private UnityEvent lastStateEvent;
 
     [SerializeField] private PlayerInputActions playerInputActions;
+
+    private bool isPaused;
     private static GameManager instance;
 
     public static GameManager Instance => instance;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
     #region Game State logic
     public void ChangeGameState(GameState newState)
     {
@@ -56,48 +59,48 @@ public class GameManager : MonoBehaviour
     public void SwitchToGameplay()
     {
         ChangeGameState(gameplayState);
-        lastStateEvent = onGameplay;
-        onGameplay?.Invoke();
+        instance.lastStateEvent = onGameplay;
+        instance.onGameplay?.Invoke();
     }
 
     public void SwitchToMenu()
     {
         ChangeGameState(mainMenuState);
         lastStateEvent = onMainMenu;
-        onMainMenu?.Invoke();
+        instance.onMainMenu?.Invoke();
     }
 
     public void SwitchToPause()
     {
         ChangeGameState(pauseState);
-        lastStateEvent = onPause;
-        onPause?.Invoke();
+        instance.lastStateEvent = onPause;
+        instance.onPause?.Invoke();
     }
 
     public void SwitchToGameOver()
     {
         ChangeGameState(gameOverState);
-        lastStateEvent = onGameOver;
-        onGameOver?.Invoke();
+        instance.lastStateEvent = onGameOver;
+        instance.onGameOver?.Invoke();
     }
     public void SwitchToWinner()
     {
         ChangeGameState(survivedState);
-        lastStateEvent = onSurvived;
-        onSurvived?.Invoke();
+        instance.lastStateEvent = onSurvived;
+        instance.onSurvived?.Invoke();
     }
 
     public void SwitchToOption()
     {
         ChangeGameState(optionState);
-        lastStateEvent = onOption;
-        onOption?.Invoke();
+        instance.lastStateEvent = onOption;
+        instance.onOption?.Invoke();
     }
 
     public void SwitchToLastState()
     {
         ChangeGameState(lastState);
-        lastStateEvent?.Invoke();
+        instance.lastStateEvent?.Invoke();
     }
 
     public void HandlePause()
@@ -125,6 +128,17 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void MuteOnPause()
+    {
+        AudioListener.pause = true;
+    }
+
+    public void UnmuteOnPause()
+    {
+        AudioListener.pause = false;
+    }
+
 
     public void DisableGameplayInputs()
     {

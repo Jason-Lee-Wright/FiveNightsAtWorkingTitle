@@ -11,9 +11,13 @@ public class BasicEnemy : MonoBehaviour
     [Header("Enemy difficulty")]
     [Range(1, 20)]
     [SerializeField] private int aiLevel; //0-20
+    [Range(1, 3)]
+    [SerializeField] private int levelIncrease; // ai level increase before capping
+    [Range(1, 20)]
+    [SerializeField] private int maxLevel; // level before ai level gets capped 
     [SerializeField] private float moveSpeed; //How fast the enemy waits before attempting to move
-    private float timer;
-
+    private float moveTimer;
+    private float minuteTimer;
     
     [Header("Being watched timers")]
     private float waitTime;
@@ -23,14 +27,16 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float minWaitTime;
     
     [Header("At door timers")]
+    [Range (1, 5)]
     [SerializeField] private float timeToKill; // how long the player has to close the door
-    [Range(1,2)]
+    [Range(1,3)]
     [SerializeField] private float timeToRetreat; // how long the enemy waits at the door before retreating
     private int currentPosition; //currentPosition will go up every successful move attempt
 
     private int enemyCamIndex;
     private int currentCamIndex;
     private int nextCameraIndex;
+    private int activeCam;
 
     private bool atDoor;
     private bool canMove;
@@ -42,12 +48,15 @@ public class BasicEnemy : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private IntEvent camIndexEvent;
-    [SerializeField] private GetActiveCamBoolEvent activeCamBoolEvent;
+    [SerializeField] private UnityEvent onMoveActiveCam; // Used to play static video on cams
     [SerializeField] private UnityEvent onKill;
+    [SerializeField] private UnityEvent onLockedOut; // To play knocking audio
+    [SerializeField] private UnityEvent onOpenDoor; // To stop knocking
     private Coroutine killOrder;
     private Coroutine waitOrder;
     private void Awake()
     {
+        canMove = true;
         animator = GetComponentInChildren<Animator>();
         TurnOffAllPosition();
         currentCamIndex = 0;
@@ -61,6 +70,18 @@ public class BasicEnemy : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleEnemyTime();
+    }
+
+    private void HandleEnemyTime()
+    {
+        if (aiLevel == maxLevel) return;
+        minuteTimer += Time.deltaTime;
+        if (minuteTimer >= 60f)
+        {
+            aiLevel += levelIncrease;
+            minuteTimer = 0;
+        }
     }
 
     private void TurnOffAllPosition()
@@ -74,13 +95,12 @@ public class BasicEnemy : MonoBehaviour
     private void HandleMovement()
     {
         if (!canMove || atDoor) return;
-        CheckNextCamera();
-        timer += Time.deltaTime;
-        if (timer >= moveSpeed)
+        moveTimer += Time.deltaTime;
+        if (moveTimer >= moveSpeed)
         {
             int randomNumber = Random.Range(1, 21); //Random number between 1 and 20, Max exclusive
             if (randomNumber <= aiLevel) ChangePosition(); //For example, if aiLevel is 10, and randomNumber is 5, the enemy will move
-            timer = 0;
+            moveTimer = 0;
         }
     }
 
@@ -98,33 +118,15 @@ public class BasicEnemy : MonoBehaviour
         if (atDoor)
         {
             yield return new WaitForSeconds(timeToRetreat);
-        }
-        else
-        {
-            waitTime = Random.Range(minWaitTime, maxWaitTime + 1);
-            yield return new WaitForSeconds(waitTime);
-        }
-
-        if (atDoor)
-        {
             waitOrder = null;
             Retreat();
         }
         else
         {
-            activeCamBoolEvent.StaticMove();
-            ChangePosition();
-            if (activeCamBoolEvent.IsActiveCam(enemyCamIndex)) // Just moved to active camera
-            {
-                waitOrder = null;
-                canMove = false;
-                waitOrder = StartCoroutine(HandleWaiting());
-            }
-            else // Just moved to none active camera
-            {
-                canMove = true;
-                waitOrder = null;
-            }
+            waitTime = Random.Range(minWaitTime, maxWaitTime + 1);
+            yield return new WaitForSeconds(waitTime);
+            canMove = true;
+            waitOrder = null;
         }
     }
 
@@ -136,13 +138,13 @@ public class BasicEnemy : MonoBehaviour
         {
             int camIndex = cameraIndexToShowOn[i];
 
-            if (!activeCamBoolEvent.IsActiveCam(camIndex))
+
+            if (camIndex != activeCam)
             {
-                safeCams.Add(i);
-            }
-            else
-            {
-                Debug.Log($"{camIndex} is not safe");
+                if (camIndex != characterPositions.Length - 1) // Dont want them on the last camera they apprear on before the door
+                {
+                    safeCams.Add(i);
+                }
             }
         }
 
@@ -160,29 +162,21 @@ public class BasicEnemy : MonoBehaviour
         atDoor = false;
     }
 
-    private void CheckNextCamera()
-    {
-        if (currentCamIndex < cameraIndexToShowOn.Length - 1)
-        {
-            nextCameraIndex = cameraIndexToShowOn[currentCamIndex + 1];
-
-
-            if (activeCamBoolEvent.IsActiveCam(nextCameraIndex))
-            {
-                timer = 0;
-                canMove = false;
-                if (waitOrder == null) waitOrder = StartCoroutine(HandleWaiting());
-            }
-        }
-        
-    }
-
     private void ChangePosition()
     {
         if (currentCamIndex < cameraIndexToShowOn.Length - 1)  // Checks if within array before adding current camera index
         {
+            if (enemyCamIndex == activeCam) // Current active cam
+            {
+                onMoveActiveCam?.Invoke();
+            }
             currentCamIndex++;
             enemyCamIndex = cameraIndexToShowOn[currentCamIndex];
+
+            if (enemyCamIndex == activeCam) // Next index is active cam
+            {
+                onMoveActiveCam?.Invoke();
+            }
         }
 
         if (currentPosition < characterPositions.Length - 1) // Checks if within array before adding current position
@@ -194,6 +188,10 @@ public class BasicEnemy : MonoBehaviour
 
         if (currentPosition == characterPositions.Length - 1) // Checks if its last index array and would be at the door
         {
+            if (enemyCamIndex == activeCam)
+            {
+                onMoveActiveCam?.Invoke();
+            }
             canMove = false;
             atDoor = true;
             enemyCamIndex = -1;
@@ -220,14 +218,14 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    private void CheckActiveCam(int ActiveCam)
+    private void CheckActiveCam(int newCam)
     {
-        if (atDoor) return;
+        if (atDoor || activeCam == newCam) return;
 
-        if (ActiveCam == enemyCamIndex)
+        activeCam = newCam;
+        if (newCam == enemyCamIndex)
         {
             canMove = false;
-            timer = 0;
             if (waitOrder != null)
             {
                 StopCoroutine(waitOrder);
@@ -259,7 +257,12 @@ public class BasicEnemy : MonoBehaviour
                 StopCoroutine(waitOrder);
                 waitOrder = null;
             }
-            if (atDoor) waitOrder = StartCoroutine(HandleWaiting());
+
+            if (atDoor) 
+            {
+                waitOrder = StartCoroutine(HandleWaiting());
+                onLockedOut?.Invoke();
+            } 
         }
         else
         {
@@ -267,6 +270,7 @@ public class BasicEnemy : MonoBehaviour
 
             if (atDoor)
             {
+                onLockedOut?.Invoke();
                 if (killOrder != null)
                 {
                     StopCoroutine(killOrder);

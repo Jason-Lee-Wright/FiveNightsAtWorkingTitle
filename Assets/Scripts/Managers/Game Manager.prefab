@@ -55,14 +55,26 @@ MonoBehaviour:
   gameOverState: {fileID: 11400000, guid: 2d201643838e05b478640534b42279bb, type: 2}
   survivedState: {fileID: 11400000, guid: 3417ac02f86c4ce41a23143e9b241c3b, type: 2}
   optionState: {fileID: 11400000, guid: 9f8d24d3effba0d4eb0aa864ab9c6bf1, type: 2}
-  currentState: {fileID: 11400000, guid: aa9d6fe05727df6418b73b267da26180, type: 2}
+  currentState: {fileID: 0}
   lastState: {fileID: 0}
   onMainMenu:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 52ebdda1a9c48b64288ae6f603344c4c, type: 2}
-        m_TargetAssemblyTypeName: SoundEvent, Assembly-CSharp
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 6883707508449581544}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_loop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2829228727887212548}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayBackgroundAudio
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 3d8c0e17e86430342bbce6b5ff5ba981, type: 3}
@@ -87,9 +99,21 @@ MonoBehaviour:
   onGameplay:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 52ebdda1a9c48b64288ae6f603344c4c, type: 2}
-        m_TargetAssemblyTypeName: SoundEvent, Assembly-CSharp
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 6883707508449581544}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_loop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2829228727887212548}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayBackgroundAudio
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 3835c233d4355fe429db499ba6d82f75, type: 3}
@@ -99,9 +123,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4580830177798163459}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: UnmuteOnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPause:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4580830177798163459}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MuteOnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onGameOver:
     m_PersistentCalls:
       m_Calls:
@@ -117,13 +165,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5110090755219547974}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: MoveOldPosition
+      - m_Target: {fileID: 8196258790914821775}
+        m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6883707508449581544}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_loop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2829228727887212548}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayBackgroundAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: f7e349724690cef4698d4f47eeb67784, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -144,13 +216,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5110090755219547974}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: MoveOldPosition
+      - m_Target: {fileID: 3468986611642365870}
+        m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6883707508449581544}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_loop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2829228727887212548}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayBackgroundAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 304b0d061e9c638439a7e00422378fca, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -537,6 +633,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 366343967673154473, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2829228727887212548}
     - target: {fileID: 908513402738413610, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -713,10 +813,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4580830177798163459}
-    - target: {fileID: 8363073772102632403, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToLastState
-      objectReference: {fileID: 0}
     - target: {fileID: 8687773855061355986, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -756,6 +852,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5787351113245103408, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
   m_PrefabInstance: {fileID: 5751149701360924163}
   m_PrefabAsset: {fileID: 0}
+--- !u!328 &3468986611642365870 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 9220100848736092589, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
+  m_PrefabInstance: {fileID: 5751149701360924163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &8196258790914821775 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 4498750640969791628, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
+  m_PrefabInstance: {fileID: 5751149701360924163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8544953894509115877 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4126975551367303142, guid: 8eacba96bcc26db4f839303be779a5ea, type: 3}
@@ -786,6 +892,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9085989139382726572}
     m_Modifications:
+    - target: {fileID: 4032822874309708794, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 3835c233d4355fe429db499ba6d82f75, type: 3}
+    - target: {fileID: 5707133858635538966, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+      propertyPath: audioListener
+      value: 
+      objectReference: {fileID: 2979285084724648337}
     - target: {fileID: 7852216357414084682, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -851,3 +965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d66717fd1ccd840973e6332d5b315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+--- !u!82 &6883707508449581544 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4032822874309708794, guid: fce166c91abcd244a8e03820e78b8a55, type: 3}
+  m_PrefabInstance: {fileID: 7525691485386134034}
+  m_PrefabAsset: {fileID: 0}

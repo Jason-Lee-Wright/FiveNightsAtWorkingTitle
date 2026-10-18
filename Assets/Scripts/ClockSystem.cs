@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClockSystem : MonoBehaviour
 {
     private int currentTime;
-    private int endTime = 6;
-    private int hourLength = 60; // 60 seconds in an in game hour
+    [SerializeField] private int endTime = 6;
+    [SerializeField] private int hourLength = 60; // 60 seconds in an in game hour
 
     [SerializeField] private IntEvent currentTimeEvent;
+    [SerializeField] private UnityEvent onFinishedNight;
 
     private void Start()
     {
@@ -24,6 +26,8 @@ public class ClockSystem : MonoBehaviour
             currentTime++;
             currentTimeEvent.RaiseEvent(currentTime);
         }
+
+        onFinishedNight?.Invoke();
         GameManager.Instance.SwitchToWinner();
 
     }

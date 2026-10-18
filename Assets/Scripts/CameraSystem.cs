@@ -9,7 +9,7 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private Transform[] cameras; //Manually setting up camera positions in the inspector
     [SerializeField] private GameObject activeCam;
     [SerializeField] private int cameraStartIndex;
-    private int currentCameraIndex;
+    [SerializeField] private int currentCameraIndex;
 
     [SerializeField] private IntEvent SetCamIndex;
     [SerializeField] private GetActiveCamBoolEvent currentCamEvent;
@@ -31,11 +31,11 @@ public class CameraSystem : MonoBehaviour
 
     private Transform GetTransform() => transform;
 
-    private void Awake()
+    private void Start()
     {
         SetCamIndex.RaiseEvent(cameraStartIndex);
 
-        StartCoroutine(TurnCamera());
+        //StartCoroutine(TurnCamera());
     }
 
     //Method to be put on buttons
@@ -62,10 +62,14 @@ public class CameraSystem : MonoBehaviour
     {
         if (indexToCheck == currentCameraIndex)
         {
+            Debug.Log("Same index as acitve cam");
             return true;
         }
-
-        return false;
+        else
+        {
+            Debug.Log("Not the same");
+            return false;
+        }
     }
 
     private IEnumerator PlayStaticVideo()
@@ -75,7 +79,7 @@ public class CameraSystem : MonoBehaviour
         onStaticEnd?.Invoke();
     }
 
-    private void ForceStatic()
+    public void ForceStatic()
     {
         if (staticRoutine != null)
         {
