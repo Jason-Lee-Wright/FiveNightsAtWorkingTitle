@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerInputActions playerInput;
-    [SerializeField] GameState gameoverState;
     [SerializeField] private GetBoolEvent getOnCamEvent;
     #region Camera Settings
     [Header("Player Camera Setiing")]
@@ -36,6 +35,8 @@ public class Player : MonoBehaviour
     private bool isMoving;
     private bool onCamera;
     private Coroutine cameraMovement;
+
+    [SerializeField] private VoidEvent onKilled; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -196,6 +197,8 @@ public class Player : MonoBehaviour
 
         getOnCamEvent.onGetBool += GetOnCam;
 
+        onKilled.onEvent += QuitCameraMenu;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -207,6 +210,8 @@ public class Player : MonoBehaviour
         moveCameraEvent.onEventCanceled -= MoveOldPosition;
 
         getOnCamEvent.onGetBool -= GetOnCam;
+
+        onKilled.onEvent -= QuitCameraMenu;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

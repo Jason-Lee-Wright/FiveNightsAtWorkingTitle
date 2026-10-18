@@ -1,22 +1,12 @@
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    [Range(0f, 1f)]
-    [SerializeField] private float masterVolume;
-    [Range(0f, 1f)]
-    [SerializeField] private float soundEffectsVolume;
-    [Range(0f, 1f)]
-    [SerializeField] private float voiceVolume;
-    [Range(0f, 1f)]
-    [SerializeField] private float backgroundVolume;
+    [SerializeField] AudioMixer audioMixer;
     [SerializeField] private AudioSource audioSource;
-
-    [SerializeField] private SoundEvent soundEffectEvent;
-    [SerializeField] private SoundEvent voiceEffectEvent;
-    [SerializeField] private SoundEvent backgroundEvent;
 
     private static SoundManager instance;
 
@@ -37,48 +27,57 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = masterVolume * backgroundVolume;
     }
-
-    public void PlaySoundEffect(AudioClip clip)
-    {
-        audioSource.PlayOneShot(clip,masterVolume * soundEffectsVolume);
-        
-    }
-
-    public void PlayVoice(AudioClip clip)
-    {
-        audioSource.PlayOneShot(clip,masterVolume * voiceVolume);
-    }
-
     public void PlayBackgroundAudio(AudioClip clip)
     {
-        if (clip == null) return;
-        audioSource.volume = masterVolume * backgroundVolume;
         audioSource.clip = clip;
-        audioSource.loop = true;
         audioSource.Play();
+    }
+
+    /// <summary>
+    /// Sound mixer values are diffrent and not from 0-1 
+    /// </summary>
+    /// <param name="soundString"></param>
+    /// <param name="volume"></param>
+    private void SetMixerVolume(string soundString, float volume) // Converts volume into decibles
+    {
+        float decibels;
+
+        if (volume > 0.0001f)
+        {
+            decibels = Mathf.Log10(volume) * 20f;
+        }
+        else
+        {
+            decibels = -80f;
+        }
+
+        instance.audioMixer.SetFloat(soundString, decibels);
     }
 
     public void SetMasterVolume(float volume)
     {
-        masterVolume = volume;
-        audioSource.volume = masterVolume * backgroundVolume;
+        SetMixerVolume("Master", volume);
     }
+
     public void SetSoundEffectsVolume(float volume)
     {
-        soundEffectsVolume = volume;
+        SetMixerVolume("SFX", volume);
     }
 
     public void SetVoiceVolume(float volume)
     {
-        voiceVolume = volume;
+        SetMixerVolume("Voice", volume);
     }
 
     public void SetBackgroundVolume(float volume)
     {
-        backgroundVolume = volume;
-        audioSource.volume = masterVolume * backgroundVolume;
+        SetMixerVolume("Background", volume);
+    }
+
+    public void SetScareVolume(float volume)
+    {
+        SetMixerVolume("Scare", volume);
     }
 
     public void StopBackgroundAudio()
@@ -86,17 +85,23 @@ public class SoundManager : MonoBehaviour
         audioSource.Stop();
     }
 
-    private void OnEnable()
+    public void PauseBackgroundAudio()
     {
-        soundEffectEvent.OnPlay += PlaySoundEffect;
-        voiceEffectEvent.OnPlay += PlayVoice;
-        backgroundEvent.OnPlay += PlayBackgroundAudio;
+        audioSource.Pause();
     }
 
-    private void OnDisable()
+    public void UnpauseBackgroundAudio()
     {
-        soundEffectEvent.OnPlay -= PlaySoundEffect;
-        voiceEffectEvent.OnPlay -= PlayVoice;
-        backgroundEvent.OnPlay -= PlayBackgroundAudio;
+
+    }
+
+    public void Pause()
+    {
+        AudioListener.pause = true;
+    }
+
+    public void PlayOnPause()
+    {
+        AudioListener.pause = false;
     }
 }

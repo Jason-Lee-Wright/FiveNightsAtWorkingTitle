@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,10 +24,11 @@ public class GameManager : MonoBehaviour
     private UnityEvent lastStateEvent;
 
     [SerializeField] private PlayerInputActions playerInputActions;
+
+    private bool isPaused;
     private static GameManager instance;
 
     public static GameManager Instance => instance;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -40,64 +42,65 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
     #region Game State logic
     public void ChangeGameState(GameState newState)
     {
-        if (currentState != null)
+        if (instance.currentState != null)
         {
             instance.currentState.ExitState();
-            instance.lastState = currentState;
+            instance.lastState = instance.currentState;
         }
-        
+
         instance.currentState = newState;
         instance.currentState.EnterState();
     }
 
     public void SwitchToGameplay()
     {
-        ChangeGameState(gameplayState);
-        lastStateEvent = onGameplay;
-        onGameplay?.Invoke();
+        ChangeGameState(instance.gameplayState);
+        instance.lastStateEvent = instance.onGameplay;
+        instance.onGameplay?.Invoke();
     }
 
     public void SwitchToMenu()
     {
-        ChangeGameState(mainMenuState);
-        lastStateEvent = onMainMenu;
-        onMainMenu?.Invoke();
+        ChangeGameState(instance.mainMenuState);
+        instance.lastStateEvent = instance.onMainMenu;
+        instance.onMainMenu?.Invoke();
     }
 
     public void SwitchToPause()
     {
-        ChangeGameState(pauseState);
-        lastStateEvent = onPause;
-        onPause?.Invoke();
+        ChangeGameState(instance.pauseState);
+        instance.lastStateEvent = instance.onPause;
+        instance.onPause?.Invoke();
     }
 
     public void SwitchToGameOver()
     {
-        ChangeGameState(gameOverState);
-        lastStateEvent = onGameOver;
-        onGameOver?.Invoke();
+        ChangeGameState(instance.gameOverState);
+        instance.lastStateEvent = instance.onGameOver;
+        instance.onGameOver?.Invoke();
     }
     public void SwitchToWinner()
     {
-        ChangeGameState(survivedState);
-        lastStateEvent = onSurvived;
-        onSurvived?.Invoke();
+        ChangeGameState(instance.survivedState);
+        instance.lastStateEvent = instance.onSurvived;
+        instance.onSurvived?.Invoke();
     }
 
     public void SwitchToOption()
     {
-        ChangeGameState(optionState);
-        lastStateEvent = onOption;
-        onOption?.Invoke();
+        ChangeGameState(instance.optionState);
+        instance.lastStateEvent = onOption;
+        instance.onOption?.Invoke();
     }
 
     public void SwitchToLastState()
     {
-        ChangeGameState(lastState);
-        lastStateEvent?.Invoke();
+        ChangeGameState(instance.lastState);
+        instance.lastStateEvent?.Invoke();
     }
 
     public void HandlePause()
@@ -105,7 +108,6 @@ public class GameManager : MonoBehaviour
         
         if (currentState == gameplayState)
         {
-            Debug.Log("Paused");
             SwitchToPause();
             PauseGame();
         }
@@ -126,6 +128,17 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void MuteOnPause()
+    {
+        AudioListener.pause = true;
+    }
+
+    public void UnmuteOnPause()
+    {
+        AudioListener.pause = false;
+    }
+
 
     public void DisableGameplayInputs()
     {

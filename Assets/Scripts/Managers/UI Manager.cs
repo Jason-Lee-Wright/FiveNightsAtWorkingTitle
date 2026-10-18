@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private float warningTime;
+    private bool alreadyWarned;
     [SerializeField] private Transform canvasUI;
     [Header("Game states")]
     [SerializeField] private GameState mainMenuState;
@@ -77,6 +78,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator WarningScreen()
     {
+        alreadyWarned = true;
         onWarningStart?.Invoke();
         yield return new WaitForSeconds(warningTime);
         onWarningEnd?.Invoke();
@@ -84,6 +86,7 @@ public class UIManager : MonoBehaviour
 
     public void StartWarning()
     {
+        if (alreadyWarned) return;
         StartCoroutine(WarningScreen());
     }
 

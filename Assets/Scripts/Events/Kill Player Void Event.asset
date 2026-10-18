@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60567fb4eacbb040ab5ffd8a49e3a72, type: 3}
-  m_Name: Sound Effect Event
-  m_EditorClassIdentifier: Assembly-CSharp::SoundEvent
+  m_Script: {fileID: 11500000, guid: c8ab4d1478401484ebee4f4023194d99, type: 3}
+  m_Name: Kill Player Void Event
+  m_EditorClassIdentifier: Assembly-CSharp::VoidEvent

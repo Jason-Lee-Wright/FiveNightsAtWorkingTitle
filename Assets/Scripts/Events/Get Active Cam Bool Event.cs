@@ -5,5 +5,9 @@ public class GetActiveCamBoolEvent : ScriptableObject
 {
     public Func<int,bool> onActiveCam;
 
-    public bool OnActiveCam(int currentIndex) => onActiveCam?.Invoke(currentIndex) ?? false;
+    public Action onStaticMove;
+
+    public bool IsActiveCam(int currentIndex) => onActiveCam?.Invoke(currentIndex) ?? false;
+
+    public void StaticMove() => onStaticMove?.Invoke();
 }

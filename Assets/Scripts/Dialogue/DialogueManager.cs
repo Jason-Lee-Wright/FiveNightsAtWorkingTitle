@@ -7,18 +7,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioClip[] phoneCalls;
     [SerializeField] private int currentNightIndex; //0 would be first night
 
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     private bool isPaused = false;
-
-    [SerializeField] private UnityEvent onStart;
     private void Start()
     {
-        onStart?.Invoke();
-        /*
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = phoneCalls[currentNightIndex];
         audioSource.Play();
-        */
     }
 
     public void OnPause(InputAction.CallbackContext context) //Invoke Unity Events to pause Audio
