@@ -46,60 +46,60 @@ public class GameManager : MonoBehaviour
     #region Game State logic
     public void ChangeGameState(GameState newState)
     {
-        if (currentState != null)
+        if (instance.currentState != null)
         {
             instance.currentState.ExitState();
-            instance.lastState = currentState;
+            instance.lastState = instance.currentState;
         }
-        
+
         instance.currentState = newState;
         instance.currentState.EnterState();
     }
 
     public void SwitchToGameplay()
     {
-        ChangeGameState(gameplayState);
-        instance.lastStateEvent = onGameplay;
+        ChangeGameState(instance.gameplayState);
+        instance.lastStateEvent = instance.onGameplay;
         instance.onGameplay?.Invoke();
     }
 
     public void SwitchToMenu()
     {
-        ChangeGameState(mainMenuState);
-        lastStateEvent = onMainMenu;
+        ChangeGameState(instance.mainMenuState);
+        instance.lastStateEvent = instance.onMainMenu;
         instance.onMainMenu?.Invoke();
     }
 
     public void SwitchToPause()
     {
-        ChangeGameState(pauseState);
-        instance.lastStateEvent = onPause;
+        ChangeGameState(instance.pauseState);
+        instance.lastStateEvent = instance.onPause;
         instance.onPause?.Invoke();
     }
 
     public void SwitchToGameOver()
     {
-        ChangeGameState(gameOverState);
-        instance.lastStateEvent = onGameOver;
+        ChangeGameState(instance.gameOverState);
+        instance.lastStateEvent = instance.onGameOver;
         instance.onGameOver?.Invoke();
     }
     public void SwitchToWinner()
     {
-        ChangeGameState(survivedState);
-        instance.lastStateEvent = onSurvived;
+        ChangeGameState(instance.survivedState);
+        instance.lastStateEvent = instance.onSurvived;
         instance.onSurvived?.Invoke();
     }
 
     public void SwitchToOption()
     {
-        ChangeGameState(optionState);
+        ChangeGameState(instance.optionState);
         instance.lastStateEvent = onOption;
         instance.onOption?.Invoke();
     }
 
     public void SwitchToLastState()
     {
-        ChangeGameState(lastState);
+        ChangeGameState(instance.lastState);
         instance.lastStateEvent?.Invoke();
     }
 

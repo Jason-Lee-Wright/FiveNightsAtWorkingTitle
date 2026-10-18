@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class ClockSystem : MonoBehaviour
 {
     private int currentTime;
-    [SerializeField] private int endTime = 6;
-    [SerializeField] private int hourLength = 60; // 60 seconds in an in game hour
+    private int endTime = 6;
+    private int hourLength = 60; // 60 seconds in an in game hour
 
     [SerializeField] private IntEvent currentTimeEvent;
     [SerializeField] private UnityEvent onFinishedNight;
