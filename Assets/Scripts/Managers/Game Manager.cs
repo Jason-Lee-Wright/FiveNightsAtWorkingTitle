@@ -99,8 +99,8 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToLastState()
     {
-        ChangeGameState(instance.lastState);
         instance.lastStateEvent?.Invoke();
+        ChangeGameState(instance.lastState);
     }
 
     public void HandlePause()
