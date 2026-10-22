@@ -1,11 +1,14 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
 public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timeUI;
     [SerializeField] private IntEvent currentTimeEvent;
 
     [SerializeField] private GameObject camMenu;
+    [SerializeField] private UnityEvent onControlsStart;
+    [SerializeField] private UnityEvent onControlsEnd;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
